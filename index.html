@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Strevde.com</title>
+    <title>Strevde</title>
     <meta name="description" content="Visualize multi-day Strava trips">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,7 +13,7 @@
 
     <style>
         .gallery .image {
-            margin: 0 0.25rem 0.25rem 0;
+            margin: 0 0.5rem 0.5rem 0;
         }
 
         .gallery .image img {
@@ -67,9 +67,7 @@
                         </div>
                     </div>
                 </div>
-                <figure class="image">
-                    <img src="assets\tmb_complete_mock.png" />
-                </figure>
+                <div id="map" style="height: 36rem"></div>
             </div>
         </div>
     </section>
@@ -262,6 +260,10 @@
             </div>
         </div>
     </footer>
+
+    <script src="script.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGtDalRhPRN9lG6IYmIzy5EPueNf_7UlM&callback=initMap&libraries=geometry"
+        async defer></script>
 </body>
 
 </html>
