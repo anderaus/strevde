@@ -22,6 +22,15 @@
             object-fit: cover;
         }
 
+        tr.is-hidden-tablet>td {
+            border: none;
+        }
+
+        #map {
+            /* Enforce 16:9 map aspect ratio */
+            padding-bottom: 56.25%;
+        }
+
         #strava-logo {
             height: 3rem;
         }
@@ -67,7 +76,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="map" style="height: 36rem"></div>
+                <div id="map"></div>
             </div>
         </div>
     </section>
@@ -117,132 +126,202 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Day</th>
-                    <th>Title</th>
-                    <th>Time</th>
-                    <th>Distance</th>
-                    <th>Elevation</th>
+                    <th class="is-hidden-mobile">Day</th>
+                    <th class="is-hidden-mobile">Title</th>
+                    <th class="has-text-right">Time</th>
+                    <th class="has-text-right">Distance</th>
+                    <th class="has-text-right">Elevation</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th>1</th>
-                    <td>
+                <tr class="is-hidden-tablet">
+                    <td colspan="3">
                         <a href="https://www.strava.com/activities/629802439" title="Balcony Route from Chamonix to Argentiére + detour">
                             Balcony Route from Chamonix to Argentiére + detour
                         </a>
                     </td>
-                    <td>4:30:22</td>
-                    <td>16.3 km</td>
-                    <td>1,414 m</td>
                 </tr>
                 <tr>
-                    <th>2</th>
-                    <td>
+                    <th class="is-hidden-mobile">1</th>
+                    <td class="is-hidden-mobile">
+                        <a href="https://www.strava.com/activities/629802439" title="Balcony Route from Chamonix to Argentiére + detour">
+                            Balcony Route from Chamonix to Argentiére + detour
+                        </a>
+                    </td>
+                    <td class="has-text-right">4:30:22</td>
+                    <td class="has-text-right">16.3 km</td>
+                    <td class="has-text-right">1,414 m</td>
+                </tr>
+                <tr class="is-hidden-tablet">
+                    <td colspan="3">
+                        <a href="https://www.strava.com/activities/631249464" title="Argentiére to Forclaz (variante d'Arpette)">
+                                Argentiére to Forclaz (variante d'Arpette)
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="is-hidden-mobile">2</th>
+                    <td class="is-hidden-mobile">
                         <a href="https://www.strava.com/activities/631249464" title="Argentiére to Forclaz (variante d'Arpette)">
                             Argentiére to Forclaz (variante d'Arpette)
                         </a>
                     </td>
-                    <td><strong>5:58:56</strong></td>
-                    <td>21.4 km</td>
-                    <td>1,610 m</td>
+                    <td class="has-text-right"><strong>5:58:56</strong></td>
+                    <td class="has-text-right">21.4 km</td>
+                    <td class="has-text-right">1,610 m</td>
                 </tr>
-                <tr>
-                    <th>3</th>
-                    <td>
+                <tr class="is-hidden-tablet">
+                    <td colspan="3">
                         <a href="https://www.strava.com/activities/631959012" title="La Forclaz to Champex">
                             La Forclaz to Champex
                         </a>
                     </td>
-                    <td>3:34:32</td>
-                    <td>15.1 km</td>
-                    <td>819 m</td>
                 </tr>
                 <tr>
-                    <th>4</th>
-                    <td>
+                    <th class="is-hidden-mobile">3</th>
+                    <td class="is-hidden-mobile">
+                        <a href="https://www.strava.com/activities/631959012" title="La Forclaz to Champex">
+                            La Forclaz to Champex
+                        </a>
+                    </td>
+                    <td class="has-text-right">3:34:32</td>
+                    <td class="has-text-right">15.1 km</td>
+                    <td class="has-text-right">819 m</td>
+                </tr>
+                <tr class="is-hidden-tablet">
+                    <td colspan="3">
                         <a href="https://www.strava.com/activities/632945706" title="Trailrun from Champex to La Foily. What a day!">
                             Trailrun from Champex to La Foily. What a day!
                         </a>
                     </td>
-                    <td>2:08:02</td>
-                    <td>14.3 km</td>
-                    <td>753 m</td>
                 </tr>
                 <tr>
-                    <th>5</th>
-                    <td>
+                    <th class="is-hidden-mobile">4</th>
+                    <td class="is-hidden-mobile">
+                        <a href="https://www.strava.com/activities/632945706" title="Trailrun from Champex to La Foily. What a day!">
+                            Trailrun from Champex to La Foily. What a day!
+                        </a>
+                    </td>
+                    <td class="has-text-right">2:08:02</td>
+                    <td class="has-text-right">14.3 km</td>
+                    <td class="has-text-right">753 m</td>
+                </tr>
+                <tr class="is-hidden-tablet">
+                    <td colspan="3">
                         <a href="https://www.strava.com/activities/634190812" title="La Fouly to Refuge Bonnatti. Long and nice.">
                             La Fouly to Refuge Bonnatti. Long and nice.
                         </a>
                     </td>
-                    <td>5:08:46</td>
-                    <td>21.1 km</td>
-                    <td>1,321 m</td>
                 </tr>
                 <tr>
-                    <th>6</th>
-                    <td>
+                    <th class="is-hidden-mobile">5</th>
+                    <td class="is-hidden-mobile">
+                        <a href="https://www.strava.com/activities/634190812" title="La Fouly to Refuge Bonnatti. Long and nice.">
+                            La Fouly to Refuge Bonnatti. Long and nice.
+                        </a>
+                    </td>
+                    <td class="has-text-right">5:08:46</td>
+                    <td class="has-text-right">21.1 km</td>
+                    <td class="has-text-right">1,321 m</td>
+                </tr>
+                <tr class="is-hidden-tablet">
+                    <td colspan="3">
                         <a href="https://www.strava.com/activities/635011527" title="Refuge Bonnatti to Courmayeur">
                             Refuge Bonnatti to Courmayeur
                         </a>
                     </td>
-                    <td>3:27:27</td>
-                    <td>13.4 km</td>
-                    <td>343 m</td>
                 </tr>
                 <tr>
-                    <th>7</th>
-                    <td>
+                    <th class="is-hidden-mobile">6</th>
+                    <td class="is-hidden-mobile">
+                        <a href="https://www.strava.com/activities/635011527" title="Refuge Bonnatti to Courmayeur">
+                            Refuge Bonnatti to Courmayeur
+                        </a>
+                    </td>
+                    <td class="has-text-right">3:27:27</td>
+                    <td class="has-text-right">13.4 km</td>
+                    <td class="has-text-right">343 m</td>
+                </tr>
+                <tr class="is-hidden-tablet">
+                    <td colspan="3">
                         <a href="https://www.strava.com/activities/637507179" title="La Visaille to Les Mottets">
                             La Visaille to Les Mottets
                         </a>
                     </td>
-                    <td>3:54:56</td>
-                    <td>16.8 km</td>
-                    <td>988 m</td>
                 </tr>
                 <tr>
-                    <th>8</th>
-                    <td>
+                    <th class="is-hidden-mobile">7</th>
+                    <td class="is-hidden-mobile">
+                        <a href="https://www.strava.com/activities/637507179" title="La Visaille to Les Mottets">
+                            La Visaille to Les Mottets
+                        </a>
+                    </td>
+                    <td class="has-text-right">3:54:56</td>
+                    <td class="has-text-right">16.8 km</td>
+                    <td class="has-text-right">988 m</td>
+                </tr>
+                <tr class="is-hidden-tablet">
+                    <td colspan="3">
                         <a href="https://www.strava.com/activities/637507924" title="Refuge Des Mottets to Contamines">
                             Refuge Des Mottets to Contamines
                         </a>
                     </td>
-                    <td>5:46:18</td>
-                    <td><strong>23.2 km</strong></td>
-                    <td>985 m</td>
                 </tr>
                 <tr>
-                    <th>9</th>
-                    <td>
+                    <th class="is-hidden-mobile">8</th>
+                    <td class="is-hidden-mobile">
+                        <a href="https://www.strava.com/activities/637507924" title="Refuge Des Mottets to Contamines">
+                            Refuge Des Mottets to Contamines
+                        </a>
+                    </td>
+                    <td class="has-text-right">5:46:18</td>
+                    <td class="has-text-right"><strong>23.2 km</strong></td>
+                    <td class="has-text-right">985 m</td>
+                </tr>
+                <tr class="is-hidden-tablet">
+                    <td colspan="3">
                         <a href="https://www.strava.com/activities/638530377" title="Contamines to Les Houches">
                             Contamines to Les Houches
                         </a>
                     </td>
-                    <td>5:26:31</td>
-                    <td>22.3 km</td>
-                    <td>1,347 m</td>
                 </tr>
                 <tr>
-                    <th>10</th>
-                    <td>
+                    <th class="is-hidden-mobile">9</th>
+                    <td class="is-hidden-mobile">
+                        <a href="https://www.strava.com/activities/638530377" title="Contamines to Les Houches">
+                            Contamines to Les Houches
+                        </a>
+                    </td>
+                    <td class="has-text-right">5:26:31</td>
+                    <td class="has-text-right">22.3 km</td>
+                    <td class="has-text-right">1,347 m</td>
+                </tr>
+                <tr class="is-hidden-tablet">
+                    <td colspan="3">
                         <a href="https://www.strava.com/activities/639551838" title="Steep hike from Les Houches into the fog">
                             Steep hike from Les Houches into the fog
                         </a>
                     </td>
-                    <td>4:10:27</td>
-                    <td>13.6 km</td>
-                    <td><strong>1,633 m</strong></td>
+                </tr>
+                <tr>
+                    <th class="is-hidden-mobile">10</th>
+                    <td class="is-hidden-mobile">
+                        <a href="https://www.strava.com/activities/639551838" title="Steep hike from Les Houches into the fog">
+                            Steep hike from Les Houches into the fog
+                        </a>
+                    </td>
+                    <td class="has-text-right">4:10:27</td>
+                    <td class="has-text-right">13.6 km</td>
+                    <td class="has-text-right"><strong>1,633 m</strong></td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td><strong>44:06:17</strong></td>
-                    <td><strong>177,5 km</strong></td>
-                    <td><strong>11,213 m</strong></td>
+                    <td class="is-hidden-mobile"></td>
+                    <td class="is-hidden-mobile"></td>
+                    <td class="has-text-right"><strong>44:06:17</strong></td>
+                    <td class="has-text-right"><strong>177,5 km</strong></td>
+                    <td class="has-text-right"><strong>11,213 m</strong></td>
                 </tr>
             </tfoot>
         </table>
