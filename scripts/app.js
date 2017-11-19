@@ -2,7 +2,7 @@ var map;
 
 // Callback function from deferred loading of google maps
 function initMap(something) {
-    fetch('/testdata/' + window.tripname + '.json')
+    fetch('testdata/' + window.tripname + '.json')
         .then(function (response) {
             return response.json();
         })
