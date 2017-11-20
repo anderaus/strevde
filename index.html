@@ -16,338 +16,123 @@
 </head>
 
 <body>
-    <section class="hero is-primary is-bold">
-        <div class="hero-body">
-            <div class="container">
-                <div class="columns">
-                    <div class="column is-half">
-                        <h1 class="title is-3">
-                            Tour du Mont Blanc
-                        </h1>
-                        <p class="subtitle">
-                            Anders & Hilde - July 2016
-                        </p>
-                    </div>
-                    <div class="column is-half">
-                        <div class="level is-mobile">
-                            <div class="level-item has-text-centered">
-                                <div>
-
-                                    <p class="title">10</p>
-                                    <p class="heading">Days</p>
+    <div id="vueapp">
+        <section class="hero is-primary is-bold">
+            <div class="hero-body">
+                <div class="container">
+                    <div class="columns">
+                        <div class="column is-half">
+                            <h1 class="title is-3">
+                                {{tripdata.title}}
+                            </h1>
+                            <p class="subtitle">
+                                {{tripdata.subtitle}}
+                            </p>
+                        </div>
+                        <div class="column is-half">
+                            <div class="level is-mobile">
+                                <div class="level-item has-text-centered">
+                                    <div>
+                                        <p class="title">{{tripdata.activities ? tripdata.activities.length : 0}}</p>
+                                        <p class="heading">Days</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="level-item has-text-centered">
-                                <div>
-
-                                    <p class="title">177,5</p>
-                                    <p class="heading">Kilometers</p>
+                                <div class="level-item has-text-centered">
+                                    <div>
+                                        <p class="title">{{total_distance / 1000 | round(1)}}</p>
+                                        <p class="heading">Kilometers</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="level-item has-text-centered">
-                                <div>
+                                <div class="level-item has-text-centered">
+                                    <div>
 
-                                    <p class="title">11.213</p>
-                                    <p class="heading">Meters climb</p>
+                                        <p class="title">{{total_elevation | round(0)}}</p>
+                                        <p class="heading">Meters climb</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div id="map"></div>
-            </div>
-        </div>
-    </section>
-    <section class="section is-clearfix gallery">
-        <div class="container">
-            <h2 class="title">Photos</h2>
-            <hr>
-            <div class="columns is-mobile is-multiline">
-                <div class="column is-half-mobile">
-                    <figure class="image is-square">
-                        <img src="https://dgtzuqphqg23d.cloudfront.net/ypNbaH_S11CzXr6HyI9jat-6u9o0vdPVv2KvWXhp3ac-512x384.jpg" />
-                    </figure>
-                </div>
-                <div class="column is-half-mobile">
-                    <figure class="image is-square">
-                        <img src="https://dgtzuqphqg23d.cloudfront.net/sI9zbKrjw39DENzqDiqwG2rt2k7EkGFvtMZY-QxNvgs-512x384.jpg" />
-                    </figure>
-                </div>
-                <div class="column is-half-mobile">
-                    <figure class="image is-square">
-                        <img src="https://dgtzuqphqg23d.cloudfront.net/c6MwBtm76DVwoWAd8heBcPAaABlJ6ox8KXklbaauChI-384x512.jpg" />
-                    </figure>
-                </div>
-                <div class="column is-half-mobile">
-                    <figure class="image is-square">
-                        <img src="https://dgtzuqphqg23d.cloudfront.net/YZwEEVgy4AsrpohN4a_J62iIIceSsW975kKc__LvXFw-384x512.jpg" />
-                    </figure>
-                </div>
-                <div class="column is-half-mobile">
-                    <figure class="image is-square">
-                        <img src="https://dgtzuqphqg23d.cloudfront.net/2OLx08jatv7IOG71i4bOb5iWiyBpi_T1PI9ZUBS8_M8-384x512.jpg" />
-                    </figure>
-                </div>
-                <div class="column is-half-mobile">
-                    <figure class="image is-square">
-                        <img src="https://dgtzuqphqg23d.cloudfront.net/5ACjXTdFTkw2xe0z9PZdchpvPrZoYSAslE47u_PwE_A-512x289.jpg" />
-                    </figure>
+                    <div id="map"></div>
                 </div>
             </div>
-            <div class="columns is-mobile is-multiline">
-                <div class="column is-half-mobile">
-                    <figure class="image is-square">
-                        <img src="https://dgtzuqphqg23d.cloudfront.net/z-B20hFvFAOSiVFQ5T7C4D3Px2JZ2DF9dbRNnazs7lg-384x512.jpg" />
-                    </figure>
-                </div>
-                <div class="column is-half-mobile">
-                    <figure class="image is-square">
-                        <img src="https://dgtzuqphqg23d.cloudfront.net/WPY4Q-AMzTF-AXNom9xRVXnxw0hhFRLcrN5F5BnwNug-512x289.jpg" />
-                    </figure>
-                </div>
-                <div class="column is-half-mobile">
-                    <figure class="image is-square">
-                        <img src="https://dgtzuqphqg23d.cloudfront.net/DoCoVeA8OO8O9zG4BpYR6yKTuIiX4464k4KN21JRA9o-384x512.jpg" />
-                    </figure>
-                </div>
-                <div class="column is-half-mobile">
-                    <figure class="image is-square">
-                        <img src="https://dgtzuqphqg23d.cloudfront.net/0fYY3yisPLcAaGqgzI6Zb9EEOgJoSFmH00yZ_x8dnXA-512x384.jpg" />
-                    </figure>
-                </div>
-                <div class="column is-half-mobile">
-                    <figure class="image is-square">
-                        <img src="https://dgtzuqphqg23d.cloudfront.net/An928CpGLdAKDRoiKVQd2M2slAEVZoadci1MlzkpedY-384x512.jpg" />
-                    </figure>
-                </div>
-                <div class="column is-half-mobile">
-                    <figure class="image is-square">
-                        <img src="https://dgtzuqphqg23d.cloudfront.net/A6J-gHmb4VxLXiZc7nhn4_0kmCVDft98Yz-5hP82syk-512x384.jpg" />
-                    </figure>
+        </section>
+
+        <section class="section is-clearfix gallery">
+            <div class="container">
+                <h2 class="title">Photos</h2>
+                <hr>
+                <div class="columns is-mobile is-multiline">
+                    <div class="column is-one-third-mobile is-2-desktop" v-for="photo in photos">
+                        <figure class="image is-square">
+                            <img :src="photo.url" />
+                        </figure>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section class="section">
-        <div class="container">
-            <h2 class="title">Details</h2>
-            <hr>
-            <table class="table is-fullwidth">
-                <thead>
-                    <tr>
-                        <th class="is-hidden-mobile">Day</th>
-                        <th class="is-hidden-mobile">Title</th>
-                        <th>Time</th>
-                        <th class="has-text-right">Distance</th>
-                        <th class="has-text-right">Elevation</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="is-hidden-tablet">
-                        <td colspan="3">
-                            <a href="https://www.strava.com/activities/629802439" title="Balcony Route from Chamonix to Argentiére + detour">
-                                Balcony Route from Chamonix to Argentiére + detour
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="is-hidden-mobile">1</th>
-                        <td class="is-hidden-mobile">
-                            <a href="https://www.strava.com/activities/629802439" title="Balcony Route from Chamonix to Argentiére + detour">
-                                Balcony Route from Chamonix to Argentiére + detour
-                            </a>
-                        </td>
-                        <td>4:30:22</td>
-                        <td class="has-text-right">16.3 km</td>
-                        <td class="has-text-right">1,414 m</td>
-                    </tr>
-                    <tr class="is-hidden-tablet">
-                        <td colspan="3">
-                            <a href="https://www.strava.com/activities/631249464" title="Argentiére to Forclaz (variante d'Arpette)">
-                                Argentiére to Forclaz (variante d'Arpette)
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="is-hidden-mobile">2</th>
-                        <td class="is-hidden-mobile">
-                            <a href="https://www.strava.com/activities/631249464" title="Argentiére to Forclaz (variante d'Arpette)">
-                                Argentiére to Forclaz (variante d'Arpette)
-                            </a>
-                        </td>
-                        <td>
-                            <strong>5:58:56</strong>
-                        </td>
-                        <td class="has-text-right">21.4 km</td>
-                        <td class="has-text-right">1,610 m</td>
-                    </tr>
-                    <tr class="is-hidden-tablet">
-                        <td colspan="3">
-                            <a href="https://www.strava.com/activities/631959012" title="La Forclaz to Champex">
-                                La Forclaz to Champex
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="is-hidden-mobile">3</th>
-                        <td class="is-hidden-mobile">
-                            <a href="https://www.strava.com/activities/631959012" title="La Forclaz to Champex">
-                                La Forclaz to Champex
-                            </a>
-                        </td>
-                        <td>3:34:32</td>
-                        <td class="has-text-right">15.1 km</td>
-                        <td class="has-text-right">819 m</td>
-                    </tr>
-                    <tr class="is-hidden-tablet">
-                        <td colspan="3">
-                            <a href="https://www.strava.com/activities/632945706" title="Trailrun from Champex to La Foily. What a day!">
-                                Trailrun from Champex to La Foily. What a day!
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="is-hidden-mobile">4</th>
-                        <td class="is-hidden-mobile">
-                            <a href="https://www.strava.com/activities/632945706" title="Trailrun from Champex to La Foily. What a day!">
-                                Trailrun from Champex to La Foily. What a day!
-                            </a>
-                        </td>
-                        <td>2:08:02</td>
-                        <td class="has-text-right">14.3 km</td>
-                        <td class="has-text-right">753 m</td>
-                    </tr>
-                    <tr class="is-hidden-tablet">
-                        <td colspan="3">
-                            <a href="https://www.strava.com/activities/634190812" title="La Fouly to Refuge Bonnatti. Long and nice.">
-                                La Fouly to Refuge Bonnatti. Long and nice.
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="is-hidden-mobile">5</th>
-                        <td class="is-hidden-mobile">
-                            <a href="https://www.strava.com/activities/634190812" title="La Fouly to Refuge Bonnatti. Long and nice.">
-                                La Fouly to Refuge Bonnatti. Long and nice.
-                            </a>
-                        </td>
-                        <td>5:08:46</td>
-                        <td class="has-text-right">21.1 km</td>
-                        <td class="has-text-right">1,321 m</td>
-                    </tr>
-                    <tr class="is-hidden-tablet">
-                        <td colspan="3">
-                            <a href="https://www.strava.com/activities/635011527" title="Refuge Bonnatti to Courmayeur">
-                                Refuge Bonnatti to Courmayeur
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="is-hidden-mobile">6</th>
-                        <td class="is-hidden-mobile">
-                            <a href="https://www.strava.com/activities/635011527" title="Refuge Bonnatti to Courmayeur">
-                                Refuge Bonnatti to Courmayeur
-                            </a>
-                        </td>
-                        <td>3:27:27</td>
-                        <td class="has-text-right">13.4 km</td>
-                        <td class="has-text-right">343 m</td>
-                    </tr>
-                    <tr class="is-hidden-tablet">
-                        <td colspan="3">
-                            <a href="https://www.strava.com/activities/637507179" title="La Visaille to Les Mottets">
-                                La Visaille to Les Mottets
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="is-hidden-mobile">7</th>
-                        <td class="is-hidden-mobile">
-                            <a href="https://www.strava.com/activities/637507179" title="La Visaille to Les Mottets">
-                                La Visaille to Les Mottets
-                            </a>
-                        </td>
-                        <td>3:54:56</td>
-                        <td class="has-text-right">16.8 km</td>
-                        <td class="has-text-right">988 m</td>
-                    </tr>
-                    <tr class="is-hidden-tablet">
-                        <td colspan="3">
-                            <a href="https://www.strava.com/activities/637507924" title="Refuge Des Mottets to Contamines">
-                                Refuge Des Mottets to Contamines
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="is-hidden-mobile">8</th>
-                        <td class="is-hidden-mobile">
-                            <a href="https://www.strava.com/activities/637507924" title="Refuge Des Mottets to Contamines">
-                                Refuge Des Mottets to Contamines
-                            </a>
-                        </td>
-                        <td>5:46:18</td>
-                        <td class="has-text-right">
-                            <strong>23.2 km</strong>
-                        </td>
-                        <td class="has-text-right">985 m</td>
-                    </tr>
-                    <tr class="is-hidden-tablet">
-                        <td colspan="3">
-                            <a href="https://www.strava.com/activities/638530377" title="Contamines to Les Houches">
-                                Contamines to Les Houches
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="is-hidden-mobile">9</th>
-                        <td class="is-hidden-mobile">
-                            <a href="https://www.strava.com/activities/638530377" title="Contamines to Les Houches">
-                                Contamines to Les Houches
-                            </a>
-                        </td>
-                        <td>5:26:31</td>
-                        <td class="has-text-right">22.3 km</td>
-                        <td class="has-text-right">1,347 m</td>
-                    </tr>
-                    <tr class="is-hidden-tablet">
-                        <td colspan="3">
-                            <a href="https://www.strava.com/activities/639551838" title="Steep hike from Les Houches into the fog">
-                                Steep hike from Les Houches into the fog
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="is-hidden-mobile">10</th>
-                        <td class="is-hidden-mobile">
-                            <a href="https://www.strava.com/activities/639551838" title="Steep hike from Les Houches into the fog">
-                                Steep hike from Les Houches into the fog
-                            </a>
-                        </td>
-                        <td>4:10:27</td>
-                        <td class="has-text-right">13.6 km</td>
-                        <td class="has-text-right">
-                            <strong>1,633 m</strong>
-                        </td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td class="is-hidden-mobile"></td>
-                        <td class="is-hidden-mobile"></td>
-                        <td>
-                            <strong>44:06:17</strong>
-                        </td>
-                        <td class="has-text-right">
-                            <strong>177,5 km</strong>
-                        </td>
-                        <td class="has-text-right">
-                            <strong>11,213 m</strong>
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-    </section>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="title">Details</h2>
+                <hr>
+                <table class="table is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th class="is-hidden-mobile">Day</th>
+                            <th class="is-hidden-mobile">Title</th>
+                            <th>Time</th>
+                            <th class="has-text-right">Distance</th>
+                            <th class="has-text-right">Elevation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template v-for="(activity, index) in tripdata.activities">
+                            <tr class="is-hidden-tablet">
+                                <td colspan="3">
+                                    <a v-bind:href="'https://www.strava.com/activities/' + activity.id" v-bind:title="activity.title">
+                                        {{activity.title}}
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="is-hidden-mobile">{{index + 1}}</th>
+                                <td class="is-hidden-mobile">
+                                    <a v-bind:href="'https://www.strava.com/activities/' + activity.id" v-bind:title="activity.title">
+                                        {{activity.title}}
+                                    </a>
+                                </td>
+                                <td v-bind:class="{ 'has-text-weight-bold': activity.moving_time == longest_moving_time }">
+                                    {{activity.moving_time | friendlytime}}
+                                </td>
+                                <td class="has-text-right" v-bind:class="{ 'has-text-weight-bold': activity.distance == longest_distance }">
+                                    {{activity.distance / 1000 | round(1)}} km
+                                </td>
+                                <td class="has-text-right" v-bind:class="{ 'has-text-weight-bold': activity.total_elevation_gain == highest_elevation }">
+                                    {{activity.total_elevation_gain | round(0)}} m
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td class="is-hidden-mobile"></td>
+                            <td class="is-hidden-mobile"></td>
+                            <td>
+                                <strong>{{total_moving_time | friendlytime}}</strong>
+                            </td>
+                            <td class="has-text-right">
+                                <strong>{{total_distance / 1000 | round(1)}} km</strong>
+                            </td>
+                            <td class="has-text-right">
+                                <strong>{{total_elevation | round(0)}} m</strong>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </section>
+    </div>
 
     <footer class="footer">
         <div class="container">
@@ -364,13 +149,17 @@
     </footer>
 
     <script>
-        var tripname = 'trip_montblanc';
+        var tripfilename = 'trip_montblanc';
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js" integrity="sha256-aB35laj7IZhLTx58xw/Gm1EKOoJJKZt6RY+bH1ReHxs="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.6/vue.min.js" integrity="sha256-3s4FrKOOE5qGMKrmJphI/ih3J3NAWqS1LmRcB7i7xoU="
+        crossorigin="anonymous"></script>
+    <script src="scripts/vue.js"></script>
     <script src="scripts/app.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGtDalRhPRN9lG6IYmIzy5EPueNf_7UlM&callback=initMap&libraries=geometry"
         async defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js" integrity="sha256-aB35laj7IZhLTx58xw/Gm1EKOoJJKZt6RY+bH1ReHxs="
-        crossorigin="anonymous"></script>
+
 </body>
 
 </html>
