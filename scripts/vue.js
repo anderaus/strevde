@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         data: {
             tripdata: {}
         },
-        mounted() {
+        mounted: function() {
             var self = this;
             fetch('testdata/' + window.tripname + '.json')
                 .then(function (response) {
@@ -57,8 +57,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         if (!decimals) {
             decimals = 0;
         }
-        value = Math.round(value * Math.pow(10, decimals)) / Math.pow(10, decimals);
-        return value.toFixed(decimals);
+        return value.toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
     });
 
     Vue.filter('friendlytime', function (value) {
@@ -70,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         var minutes = Math.floor((value - (hours * 3600)) / 60);
         var seconds = value - (hours * 3600) - (minutes * 60);
 
-        if (hours < 10) { hours = "0" + hours; }
+        // if (hours < 10) { hours = "0" + hours; }
         if (minutes < 10) { minutes = "0" + minutes; }
         if (seconds < 10) { seconds = "0" + seconds; }
         return hours + ':' + minutes + ':' + seconds;
