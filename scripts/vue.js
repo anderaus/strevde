@@ -5,9 +5,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
         data: {
             tripdata: {}
         },
-        mounted: function() {
+        mounted: function () {
             var self = this;
-            fetch('testdata/' + window.tripname + '.json')
+            fetch('testdata/' + window.tripfilename + '.json')
                 .then(function (response) {
                     return response.json();
                 })
@@ -45,10 +45,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
             highest_elevation: function () {
                 if (!this.tripdata.activities) return 0;
                 return Math.max.apply(Math, this.tripdata.activities.map(function (item) { return item.total_elevation_gain; }))
+            },
+            photos: function () {
+                if (!this.tripdata.activities) return [];
+                return this.tripdata.activities.reduce(function (previous, current, currentIndex, calledupon) {
+                    return previous.concat(current.photos || []);
+                }, []);
             }
         }
     });
-
 
     Vue.filter('round', function (value, decimals) {
         if (!value) {
