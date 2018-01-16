@@ -2,6 +2,7 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Host;
 using StrevdeAzureFunctions.Models;
+using StrevdeAzureFunctions.Services;
 using System.Configuration;
 using System.Linq;
 using System.Net;
@@ -21,16 +22,14 @@ namespace StrevdeAzureFunctions
             TraceWriter log)
         {
             var activitiesRequestBody = await req.Content.ReadAsAsync<ActivitiesRequestBody>();
-            log.Info($"Got {activitiesRequestBody.ActivityIDs.Count()} activities:");
-            foreach (var activityId in activitiesRequestBody.ActivityIDs)
+            if (activitiesRequestBody.ActivityIDs.Count() > 50)
             {
-                log.Info($"\tID: {activityId}");
+                return req.CreateErrorResponse(HttpStatusCode.BadRequest, "Maximum 50 activities");
             }
 
-            // Fetch all activity data from Strava
-            var stravaParser = new StravaParser(HttpClient, ConfigurationManager.AppSettings.Get("StravaBearerToken"));
-            await stravaParser.DownloadActivities(activitiesRequestBody.ActivityIDs);
-            var trip = stravaParser.ParseAsTrip();
+            var stravaFetcher = new StravaFetcher(HttpClient, ConfigurationManager.AppSettings.Get("StravaBearerToken"));
+            var tripConverter = new TripConverter(stravaFetcher);
+            var trip = tripConverter.GenerateTrip(activitiesRequestBody.ActivityIDs);
 
             // Upsert to Azure Cosmos DB
             await documents.AddAsync(trip);
