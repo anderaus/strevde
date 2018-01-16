@@ -39,7 +39,7 @@ namespace StrevdeAzureFunctions.Services
             return new Trip
             {
                 Activities = parsedActivities.ToArray(),
-                Id = Guid.NewGuid(),
+                Id = GuidEncoder.Encode(Guid.NewGuid()),
                 Title = "Some random title",
                 Subtitle = "Some random subtitle goes here",
                 MapType = "satellite"
