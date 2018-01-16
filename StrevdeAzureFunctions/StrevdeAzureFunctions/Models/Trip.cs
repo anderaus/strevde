@@ -1,12 +1,11 @@
 ﻿using Newtonsoft.Json;
-using System;
 
 namespace StrevdeAzureFunctions.Models
 {
     public class Trip
     {
         [JsonProperty("id")]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         [JsonProperty("maptype")]
         public string MapType { get; set; }
         [JsonProperty("title")]

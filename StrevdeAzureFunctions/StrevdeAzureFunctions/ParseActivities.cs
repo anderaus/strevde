@@ -29,12 +29,13 @@ namespace StrevdeAzureFunctions
 
             var stravaFetcher = new StravaFetcher(HttpClient, ConfigurationManager.AppSettings.Get("StravaBearerToken"));
             var tripConverter = new TripConverter(stravaFetcher);
-            var trip = tripConverter.GenerateTrip(activitiesRequestBody.ActivityIDs);
+            var trip = await tripConverter.GenerateTrip(activitiesRequestBody.ActivityIDs);
 
             // Upsert to Azure Cosmos DB
             await documents.AddAsync(trip);
 
-            return req.CreateResponse(HttpStatusCode.OK);
+            return req.CreateResponse(HttpStatusCode.OK,
+                new TripResponseBody { TripId = trip.Id });
         }
     }
 }
