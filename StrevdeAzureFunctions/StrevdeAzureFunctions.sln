@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrevdeAzureFunctions", "StrevdeAzureFunctions\StrevdeAzureFunctions.csproj", "{AA2F697B-2950-49A4-941A-6F089B082B41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StrevdeAzureFunctions", "StrevdeAzureFunctions\StrevdeAzureFunctions.csproj", "{AA2F697B-2950-49A4-941A-6F089B082B41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

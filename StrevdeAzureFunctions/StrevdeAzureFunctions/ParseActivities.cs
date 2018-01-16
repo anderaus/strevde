@@ -29,6 +29,7 @@ namespace StrevdeAzureFunctions
 
             var stravaFetcher = new StravaFetcher(HttpClient, ConfigurationManager.AppSettings.Get("StravaBearerToken"));
             var tripConverter = new TripConverter(stravaFetcher);
+
             var trip = await tripConverter.GenerateTrip(activitiesRequestBody.ActivityIDs);
 
             // Upsert to Azure Cosmos DB
