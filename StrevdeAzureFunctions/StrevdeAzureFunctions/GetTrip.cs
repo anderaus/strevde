@@ -31,13 +31,16 @@ namespace StrevdeAzureFunctions
             var endpoint = connectionString.Split(';')[0].Substring(16);
             var key = connectionString.Split(';')[1].Substring(11).TrimEnd(';');
 
-            var documentClient = new DocumentClient(new Uri(endpoint), key);
+            Trip trip;
+            using (var documentClient = new DocumentClient(new Uri(endpoint), key))
+            {
 
-            var trip = documentClient.CreateDocumentQuery<Trip>(
-                    UriFactory.CreateDocumentCollectionUri("strevde_test", "trips"), new FeedOptions { MaxItemCount = 1 })
-                .Where(t => t.Id == id)
-                .AsEnumerable()
-                .FirstOrDefault();
+                trip = documentClient.CreateDocumentQuery<Trip>(
+                        UriFactory.CreateDocumentCollectionUri("strevde_test", "trips"), new FeedOptions { MaxItemCount = 1 })
+                    .Where(t => t.Id == id)
+                    .AsEnumerable()
+                    .FirstOrDefault();
+            }
 
             return trip == null
                 ? req.CreateErrorResponse(HttpStatusCode.NotFound, $"No trip with id {id} found")
