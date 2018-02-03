@@ -1,17 +1,17 @@
 <template>
-  <div id="app">
-    <app-header></app-header>
-    <app-footer></app-footer>
+  <div id="strevdeApp">
+    <strevde-header></strevde-header>
+    <strevde-footer></strevde-footer>
   </div>
 </template>
 
 <script>
-import AppHeader from './components/AppHeader';
-import AppFooter from './components/AppFooter';
+import StrevdeHeader from './components/Header';
+import StrevdeFooter from './components/Footer';
 
 export default {
-  name: 'app',
-  components: { AppHeader, AppFooter },
+  name: 'strevdeApp',
+  components: { StrevdeHeader, StrevdeFooter },
   data() {
     return {};
   }
