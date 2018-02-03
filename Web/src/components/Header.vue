@@ -15,7 +15,7 @@
             <div class="level is-mobile">
               <div class="level-item has-text-centered">
                 <div>
-                  <p class="title">{{activities ? activities.length : 0}}</p>
+                  <p class="title">{{activities_count}}</p>
                   <p class="heading">Days</p>
                 </div>
               </div>
@@ -42,18 +42,22 @@
 
 <script>
 import StrevdeMap from './Map';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'StrevdeHeader',
   components: { StrevdeMap },
-  data() {
-    return {
-      title: 'Hardcoded title',
-      subtitle: 'And a hardcoded subtitle as well',
-      total_distance: 12345.67,
-      total_elevation: 876,
-      activities: [0, 1, 2]
-    };
+  computed: {
+    title() {
+      return this.$store.state.trip.title;
+    },
+    subtitle() {
+      return this.$store.state.trip.subtitle;
+    },
+    activities() {
+      return this.$store.state.trip.activities;
+    },
+    ...mapGetters(['activities_count', 'total_distance', 'total_elevation'])
   }
 };
 </script>
