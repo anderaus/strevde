@@ -34,14 +34,18 @@
             </div>
           </div>
         </div>
-        <div id="map"></div>
+        <strevde-map></strevde-map>
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import StrevdeMap from './Map';
+
 export default {
+  name: 'StrevdeHeader',
+  components: { StrevdeMap },
   data() {
     return {
       title: 'Hardcoded title',

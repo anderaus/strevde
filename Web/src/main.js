@@ -6,7 +6,9 @@ import { round } from './filters/round.js'
 // register filters globally
 Vue.filter('round', round)
 
-new Vue({
-  el: '#app',
-  render: h => h(App)
-})
+document.addEventListener("DOMContentLoaded", function (event) {
+  new Vue({
+    el: '#app',
+    render: h => h(App)
+  })
+});
