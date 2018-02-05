@@ -43,6 +43,12 @@ export default new Vuex.Store({
             return state.trip.activities.reduce(function (previous, current, currentIndex, calledupon) {
                 return previous.concat(current.photos || []);
             }, []);
+        },
+        polylines: state => {
+            if (!state.trip.activities) return [];
+            return state.trip.activities.reduce(function (previous, current, currentIndex, calledupon) {
+                return previous.concat(current.polyline || []);
+            }, []);
         }
     },
     state: {
