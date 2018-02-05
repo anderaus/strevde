@@ -37,6 +37,12 @@ export default new Vuex.Store({
         highest_elevation: state => {
             if (!state.trip.activities) return 0;
             return Math.max.apply(Math, state.trip.activities.map(function (item) { return item.total_elevation_gain; }))
+        },
+        photos: state => {
+            if (!state.trip.activities) return [];
+            return state.trip.activities.reduce(function (previous, current, currentIndex, calledupon) {
+                return previous.concat(current.photos || []);
+            }, []);
         }
     },
     state: {

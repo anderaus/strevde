@@ -13,33 +13,31 @@
                 <th class="has-text-right">Elevation</th>
             </tr>
         </thead>
-        <tbody>
-            <template v-for="(activity, index) in activities">
-                <tr class="is-hidden-tablet" :key="activity.id">
-                    <td colspan="3">
-                        <a v-bind:href="'https://www.strava.com/activities/' + activity.id" v-bind:title="activity.title">
-                            {{activity.title}}
-                        </a>
-                    </td>
-                </tr>
-                <tr :key="activity.id">
-                    <th class="is-hidden-mobile">{{index + 1}}</th>
-                    <td class="is-hidden-mobile">
-                        <a v-bind:href="'https://www.strava.com/activities/' + activity.id" v-bind:title="activity.title">
-                            {{activity.title}}
-                        </a>
-                    </td>
-                    <td v-bind:class="{ 'has-text-weight-bold': activity.moving_time == longest_moving_time }">
-                        {{activity.moving_time | friendlytime}}
-                    </td>
-                    <td class="has-text-right" v-bind:class="{ 'has-text-weight-bold': activity.distance == longest_distance }">
-                        {{activity.distance / 1000 | round(1)}} km
-                    </td>
-                    <td class="has-text-right" v-bind:class="{ 'has-text-weight-bold': activity.total_elevation_gain == highest_elevation }">
-                        {{activity.total_elevation_gain | round(0)}} m
-                    </td>
-                </tr>
-            </template>
+        <tbody v-for="(activity, index) in activities" :key="activity.id">
+            <tr class="is-hidden-tablet" >
+                <td colspan="3">
+                    <a v-bind:href="'https://www.strava.com/activities/' + activity.id" v-bind:title="activity.title">
+                        {{activity.title}}
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <th class="is-hidden-mobile">{{index + 1}}</th>
+                <td class="is-hidden-mobile">
+                    <a v-bind:href="'https://www.strava.com/activities/' + activity.id" v-bind:title="activity.title">
+                        {{activity.title}}
+                    </a>
+                </td>
+                <td v-bind:class="{ 'has-text-weight-bold': activity.moving_time == longest_moving_time }">
+                    {{activity.moving_time | friendlytime}}
+                </td>
+                <td class="has-text-right" v-bind:class="{ 'has-text-weight-bold': activity.distance == longest_distance }">
+                    {{activity.distance / 1000 | round(1)}} km
+                </td>
+                <td class="has-text-right" v-bind:class="{ 'has-text-weight-bold': activity.total_elevation_gain == highest_elevation }">
+                    {{activity.total_elevation_gain | round(0)}} m
+                </td>
+            </tr>
         </tbody>
         <tfoot>
             <tr>
