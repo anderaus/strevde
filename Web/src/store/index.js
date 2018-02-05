@@ -27,8 +27,8 @@ export default new Vuex.Store({
             }, 0);
         },
         longest_moving_time: state => {
-          if (!state.trip.activities) return 0;
-          return Math.max.apply(Math, state.trip.activities.map(function (item) { return item.moving_time; }))
+            if (!state.trip.activities) return 0;
+            return Math.max.apply(Math, state.trip.activities.map(function (item) { return item.moving_time; }))
         },
         longest_distance: state => {
             if (!state.trip.activities) return 0;
