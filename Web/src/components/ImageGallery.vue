@@ -1,5 +1,5 @@
 <template>
-   <section class="section is-clearfix gallery">
+   <section class="section is-clearfix">
         <div class="container">
             <h2 class="title">Photos</h2>
             <hr>
@@ -25,7 +25,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.gallery .image img {
+.image img {
   object-fit: cover;
 }
 </style>
