@@ -1,16 +1,22 @@
 <template>
-    <gmap-map class="gmap" 
-        :center="center"
+    <gmap-map 
+        class="gmap" 
+        ref="map"
+        :center="{ lat: 10, lng: 10}"
         :options="{fullscreenControl: true, mapTypeControl: true, scrollwheel: true, streetViewControl: true}"
-        :zoom="10"
+        :zoom="0"
         map-type-id="terrain" >
-      <map-polyline v-for="polyline in polylines" :encodedPolyline="polyline" :key="polyline"></map-polyline>
+        <gmap-polyline 
+          v-for="path in decodedPolylines" 
+          :path="path" 
+          :options="{ geodesic:false, strokeColor:'#FF0000' }">
+        </gmap-polyline>
     </gmap-map>
 </template>
 
 <script>
 import * as VueGoogleMaps from 'vue2-google-maps';
-import MapPolyline from './MapPolyline';
+import { loaded as googleLoaded } from 'vue2-google-maps';
 import Vue from 'vue';
 import { mapGetters } from 'vuex';
 
@@ -23,20 +29,35 @@ Vue.use(VueGoogleMaps, {
 
 export default {
   name: 'StrevdeMap',
-  components: {
-    MapPolyline
-  },
   data() {
     return {
-      // TODO: Fit center automatically, also upon resize
-      center: { lat: 59.911491, lng: 10.757933 }
+      decodedPolylines: []
     };
   },
   computed: {
     ...mapGetters(['polylines'])
+  },
+  mounted: function() {
+    googleLoaded.then(() => {
+      var bounds = new google.maps.LatLngBounds();
+
+      this.polylines.forEach(p => {
+        var path = new google.maps.geometry.encoding.decodePath(p);
+        this.decodedPolylines.push(path);
+
+        path.forEach(function(point, index) {
+          bounds.extend(point);
+        });
+      });
+
+      this.$refs.map.$mapCreated.then(() => {
+        this.$refs.map.fitBounds(bounds);
+      });
+    });
   }
 };
 </script>
+
 <style lang="scss" scoped>
 .gmap {
   padding-bottom: 62%;
