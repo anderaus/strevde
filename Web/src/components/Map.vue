@@ -53,6 +53,11 @@ export default {
       this.$refs.map.$mapCreated.then(() => {
         this.$refs.map.fitBounds(bounds);
       });
+
+      var self = this;
+      google.maps.event.addDomListener(window, 'resize', function() {
+        self.$refs.map.resizePreserveCenter();
+      });
     });
   }
 };
