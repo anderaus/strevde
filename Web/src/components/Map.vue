@@ -7,9 +7,10 @@
         :zoom="0"
         map-type-id="terrain" >
         <gmap-polyline 
-          v-for="path in decodedPolylines" 
-          :path="path" 
-          :options="{ geodesic:false, strokeColor:'#FF0000' }">
+          v-for="line in lines"
+          :key="line.id"
+          :path="line.path" 
+          :options="{ geodesic: false, strokeColor: line.color, strokeWeight: 3 }">
         </gmap-polyline>
     </gmap-map>
 </template>
@@ -31,7 +32,7 @@ export default {
   name: 'StrevdeMap',
   data() {
     return {
-      decodedPolylines: []
+      lines: []
     };
   },
   computed: {
@@ -41,9 +42,13 @@ export default {
     googleLoaded.then(() => {
       var bounds = new google.maps.LatLngBounds();
 
-      this.polylines.forEach(p => {
+      this.polylines.forEach((p, i) => {
         var path = new google.maps.geometry.encoding.decodePath(p);
-        this.decodedPolylines.push(path);
+        this.lines.push({
+          id: i,
+          path: path,
+          color: i % 2 == 0 ? '#FF0000' : '#8B0000'
+        });
 
         path.forEach(function(point, index) {
           bounds.extend(point);
