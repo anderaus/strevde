@@ -1,4 +1,4 @@
-# strevde
+# strevde.com
 Yet another Strava trip combiner experiment
 
-[Demo](https://anderaus.github.io/strevde)
+[Alpha version](strevde.com)
