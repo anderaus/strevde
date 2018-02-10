@@ -1,9 +1,12 @@
-export function round(value, decimals) {
+export function round (value, decimals) {
   if (!value) {
-    value = 0;
+    value = 0
   }
   if (!decimals) {
-    decimals = 0;
+    decimals = 0
   }
-  return value.toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
-};
+  return value.toLocaleString(undefined, {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals
+  })
+}
