@@ -1,15 +1,15 @@
 <template>
-    <gmap-map 
-        class="gmap" 
+    <gmap-map
+        class="gmap"
         ref="map"
         :center="{ lat: 10, lng: 10}"
         :options="{fullscreenControl: true, mapTypeControl: true, scrollwheel: true, streetViewControl: true}"
         :zoom="0"
         map-type-id="terrain" >
-        <gmap-polyline 
+        <gmap-polyline
           v-for="line in lines"
           :key="line.id"
-          :path="line.path" 
+          :path="line.path"
           :options="{ geodesic: false, strokeColor: line.color, strokeWeight: 3 }">
         </gmap-polyline>
     </gmap-map>
@@ -17,7 +17,6 @@
 
 <script>
 import * as VueGoogleMaps from 'vue2-google-maps';
-import { loaded as googleLoaded } from 'vue2-google-maps';
 import Vue from 'vue';
 import { mapGetters } from 'vuex';
 
@@ -39,7 +38,8 @@ export default {
     ...mapGetters(['polylines'])
   },
   mounted: function() {
-    googleLoaded.then(() => {
+    /* eslint-disable no-undef */
+    VueGoogleMaps.loaded.then(() => {
       var bounds = new google.maps.LatLngBounds();
 
       this.polylines.forEach((p, i) => {
@@ -47,7 +47,7 @@ export default {
         this.lines.push({
           id: i,
           path: path,
-          color: i % 2 == 0 ? '#FF0000' : '#8B0000'
+          color: i % 2 === 0 ? '#FF0000' : '#8B0000'
         });
 
         path.forEach(function(point, index) {
