@@ -67,7 +67,9 @@ export default new Vuex.Store({
           'total_elevation_gain': 1414.5,
           'photos': [
             {
-              'url': 'https://dgtzuqphqg23d.cloudfront.net/ypNbaH_S11CzXr6HyI9jat-6u9o0vdPVv2KvWXhp3ac-512x384.jpg'
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/ypNbaH_S11CzXr6HyI9jat-6u9o0vdPVv2KvWXhp3ac-512x384.jpg',
+              'width': 512,
+              'height': 384
             }
           ]
         },
@@ -81,7 +83,9 @@ export default new Vuex.Store({
           'total_elevation_gain': 1609.5,
           'photos': [
             {
-              'url': 'https://dgtzuqphqg23d.cloudfront.net/sI9zbKrjw39DENzqDiqwG2rt2k7EkGFvtMZY-QxNvgs-512x384.jpg'
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/sI9zbKrjw39DENzqDiqwG2rt2k7EkGFvtMZY-QxNvgs-512x384.jpg',
+              'width': 512,
+              'height': 384
             }
           ]
         },
@@ -95,16 +99,24 @@ export default new Vuex.Store({
           'total_elevation_gain': 819.2,
           'photos': [
             {
-              'url': 'https://dgtzuqphqg23d.cloudfront.net/c6MwBtm76DVwoWAd8heBcPAaABlJ6ox8KXklbaauChI-384x512.jpg'
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/c6MwBtm76DVwoWAd8heBcPAaABlJ6ox8KXklbaauChI-384x512.jpg',
+              'width': 384,
+              'height': 512
             },
             {
-              'url': 'https://dgtzuqphqg23d.cloudfront.net/YZwEEVgy4AsrpohN4a_J62iIIceSsW975kKc__LvXFw-384x512.jpg'
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/YZwEEVgy4AsrpohN4a_J62iIIceSsW975kKc__LvXFw-384x512.jpg',
+              'width': 384,
+              'height': 512
             },
             {
-              'url': 'https://dgtzuqphqg23d.cloudfront.net/2OLx08jatv7IOG71i4bOb5iWiyBpi_T1PI9ZUBS8_M8-384x512.jpg'
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/2OLx08jatv7IOG71i4bOb5iWiyBpi_T1PI9ZUBS8_M8-384x512.jpg',
+              'width': 384,
+              'height': 512
             },
             {
-              'url': 'https://dgtzuqphqg23d.cloudfront.net/5ACjXTdFTkw2xe0z9PZdchpvPrZoYSAslE47u_PwE_A-512x289.jpg'
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/5ACjXTdFTkw2xe0z9PZdchpvPrZoYSAslE47u_PwE_A-512x289.jpg',
+              'width': 512,
+              'height': 289
             }
           ]
         },
@@ -127,10 +139,14 @@ export default new Vuex.Store({
           'total_elevation_gain': 1321.5,
           'photos': [
             {
-              'url': 'https://dgtzuqphqg23d.cloudfront.net/z-B20hFvFAOSiVFQ5T7C4D3Px2JZ2DF9dbRNnazs7lg-384x512.jpg'
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/z-B20hFvFAOSiVFQ5T7C4D3Px2JZ2DF9dbRNnazs7lg-384x512.jpg',
+              'width': 384,
+              'height': 512
             },
             {
-              'url': 'https://dgtzuqphqg23d.cloudfront.net/WPY4Q-AMzTF-AXNom9xRVXnxw0hhFRLcrN5F5BnwNug-512x289.jpg'
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/WPY4Q-AMzTF-AXNom9xRVXnxw0hhFRLcrN5F5BnwNug-512x289.jpg',
+              'width': 512,
+              'height': 289
             }
           ]
         },
@@ -144,7 +160,9 @@ export default new Vuex.Store({
           'total_elevation_gain': 343.3,
           'photos': [
             {
-              'url': 'https://dgtzuqphqg23d.cloudfront.net/DoCoVeA8OO8O9zG4BpYR6yKTuIiX4464k4KN21JRA9o-384x512.jpg'
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/DoCoVeA8OO8O9zG4BpYR6yKTuIiX4464k4KN21JRA9o-384x512.jpg',
+              'width': 384,
+              'height': 512
             }
           ]
         },
@@ -167,13 +185,19 @@ export default new Vuex.Store({
           'total_elevation_gain': 985.2,
           'photos': [
             {
-              'url': 'https://dgtzuqphqg23d.cloudfront.net/0fYY3yisPLcAaGqgzI6Zb9EEOgJoSFmH00yZ_x8dnXA-512x384.jpg'
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/0fYY3yisPLcAaGqgzI6Zb9EEOgJoSFmH00yZ_x8dnXA-512x384.jpg',
+              'width': 512,
+              'height': 384
             },
             {
-              'url': 'https://dgtzuqphqg23d.cloudfront.net/An928CpGLdAKDRoiKVQd2M2slAEVZoadci1MlzkpedY-384x512.jpg'
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/An928CpGLdAKDRoiKVQd2M2slAEVZoadci1MlzkpedY-384x512.jpg',
+              'width': 384,
+              'height': 512
             },
             {
-              'url': 'https://dgtzuqphqg23d.cloudfront.net/A6J-gHmb4VxLXiZc7nhn4_0kmCVDft98Yz-5hP82syk-512x384.jpg'
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/A6J-gHmb4VxLXiZc7nhn4_0kmCVDft98Yz-5hP82syk-512x384.jpg',
+              'width': 512,
+              'height': 384
             }
           ]
         },
