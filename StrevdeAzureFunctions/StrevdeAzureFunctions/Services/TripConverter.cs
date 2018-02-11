@@ -22,7 +22,7 @@ namespace StrevdeAzureFunctions.Services
             var parsedActivities = new List<Activity>();
             foreach (var activity in stravaActivities)
             {
-                parsedActivities.Add(new Activity
+                var parsedActivity = new Activity
                 {
                     Id = activity.Id,
                     Distance = activity.Distance,
@@ -31,10 +31,35 @@ namespace StrevdeAzureFunctions.Services
                     Polyline = activity.Map.Polyline,
                     Title = activity.Name,
                     TotalElevationGain = activity.TotalElevationGain
-                });
+                };
+
+                if (activity.TotalPhotoCount > 0)
+                {
+                    var stravaThumbnailPhotos = (await _activityFetcher.FetchActivityPhotos(activity.Id, 350)).ToList();
+                    var stravaFullsizePhotos = (await _activityFetcher.FetchActivityPhotos(activity.Id, 1600)).ToList();
+
+                    var parsedPhotos = new List<Photo>();
+                    for (var i = 0; i < stravaThumbnailPhotos.Count; i++)
+                    {
+                        parsedPhotos.Add(new Photo
+                        {
+                            Id = stravaFullsizePhotos[i].UniqueId,
+                            Caption = stravaFullsizePhotos[i].Caption,
+                            Url = stravaFullsizePhotos[i].Urls.Values.Single(),
+                            Width = stravaFullsizePhotos[i].Sizes.Values.Single()[0],
+                            Height = stravaFullsizePhotos[i].Sizes.Values.Single()[1],
+                            ThumbnailUrl = stravaThumbnailPhotos[i].Urls.Values.Single(),
+                            ThumbnailWidth = stravaThumbnailPhotos[i].Sizes.Values.Single()[0],
+                            ThumbnailHeight = stravaThumbnailPhotos[i].Sizes.Values.Single()[1]
+                        });
+                    }
+
+                    parsedActivity.Photos = parsedPhotos;
+                }
+
+                parsedActivities.Add(parsedActivity);
             }
 
-            // TODO: Fetch photos using photos api and add to result
             // TODO: Set name, description and other root metadata for trip
             return new Trip
             {
