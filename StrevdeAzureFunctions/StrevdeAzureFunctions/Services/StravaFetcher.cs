@@ -32,5 +32,15 @@ namespace StrevdeAzureFunctions.Services
 
             return activities;
         }
+
+        public async Task<IEnumerable<StravaPhoto>> FetchActivityPhotos(decimal activityId, int matchWidth)
+        {
+            var response = await _httpClient.GetAsync(new Uri($"https://www.strava.com/api/v3/activities/{activityId}/photos?photo_sources=true&size={matchWidth}"));
+            response.EnsureSuccessStatusCode();
+
+            var photos = await response.Content.ReadAsAsync<IEnumerable<StravaPhoto>>();
+
+            return photos;
+        }
     }
 }

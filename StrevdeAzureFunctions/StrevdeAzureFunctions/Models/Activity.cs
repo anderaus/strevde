@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace StrevdeAzureFunctions.Models
 {
@@ -19,6 +20,6 @@ namespace StrevdeAzureFunctions.Models
         [JsonProperty("total_elevation_gain")]
         public decimal TotalElevationGain { get; set; }
         [JsonProperty("photos")]
-        public Photo[] Photos { get; set; }
+        public IEnumerable<Photo> Photos { get; set; }
     }
 }

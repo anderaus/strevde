@@ -7,5 +7,6 @@ namespace StrevdeAzureFunctions.Services
     public interface IActivityFetcher
     {
         Task<IEnumerable<StravaActivity>> FetchActivities(IEnumerable<string> activityIDs);
+        Task<IEnumerable<StravaPhoto>> FetchActivityPhotos(decimal activityId, int matchWidth);
     }
 }
