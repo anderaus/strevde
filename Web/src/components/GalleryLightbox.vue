@@ -86,7 +86,8 @@ export default {
   methods: {
     show: function(imageIndex) {
       var options = {
-        index: imageIndex
+        index: imageIndex,
+        history: false
       };
 
       var gallery = new PhotoSwipe(
