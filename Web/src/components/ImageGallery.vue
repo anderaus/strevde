@@ -6,7 +6,7 @@
         <div class="columns is-mobile is-multiline">
           <div class="column is-one-third-mobile is-3-tablet is-2-desktop" v-for="(photo, index) in photos" :key="photo.id">
             <figure class="image is-square" >
-              <img :src="photo.url" @click="onImageClick(index)" />
+              <img :src="photo.thumbnail_url" @click="onImageClick(index)" />
             </figure>
           </div>
         </div>
@@ -36,7 +36,9 @@ export default {
       return this.photos.map(p => ({
         src: p.url,
         h: p.height,
-        w: p.width
+        w: p.width,
+        msrc: p.thumbnail_url,
+        title: p.caption
       }));
     }
   }

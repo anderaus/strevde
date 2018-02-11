@@ -67,9 +67,14 @@ export default new Vuex.Store({
           'total_elevation_gain': 1414.5,
           'photos': [
             {
-              'url': 'https://dgtzuqphqg23d.cloudfront.net/ypNbaH_S11CzXr6HyI9jat-6u9o0vdPVv2KvWXhp3ac-512x384.jpg',
-              'width': 512,
-              'height': 384
+              'id': '1772e9a9-58ee-43ca-8f8e-770c29736b86',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/ypNbaH_S11CzXr6HyI9jat-6u9o0vdPVv2KvWXhp3ac-2048x1536.jpg',
+              'width': '2048',
+              'height': '1536',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/ypNbaH_S11CzXr6HyI9jat-6u9o0vdPVv2KvWXhp3ac-512x384.jpg',
+              'thumbnail_width': '512',
+              'thumbnail_height': '384'
             }
           ]
         },
@@ -83,9 +88,14 @@ export default new Vuex.Store({
           'total_elevation_gain': 1609.5,
           'photos': [
             {
-              'url': 'https://dgtzuqphqg23d.cloudfront.net/sI9zbKrjw39DENzqDiqwG2rt2k7EkGFvtMZY-QxNvgs-512x384.jpg',
-              'width': 512,
-              'height': 384
+              'id': 'd0a0f846-546e-49f7-a91e-0db5b47c8d00',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/sI9zbKrjw39DENzqDiqwG2rt2k7EkGFvtMZY-QxNvgs-2048x1536.jpg',
+              'width': '2048',
+              'height': '1536',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/sI9zbKrjw39DENzqDiqwG2rt2k7EkGFvtMZY-QxNvgs-512x384.jpg',
+              'thumbnail_width': '512',
+              'thumbnail_height': '384'
             }
           ]
         },
@@ -99,24 +109,14 @@ export default new Vuex.Store({
           'total_elevation_gain': 819.2,
           'photos': [
             {
-              'url': 'https://dgtzuqphqg23d.cloudfront.net/c6MwBtm76DVwoWAd8heBcPAaABlJ6ox8KXklbaauChI-384x512.jpg',
-              'width': 384,
-              'height': 512
-            },
-            {
-              'url': 'https://dgtzuqphqg23d.cloudfront.net/YZwEEVgy4AsrpohN4a_J62iIIceSsW975kKc__LvXFw-384x512.jpg',
-              'width': 384,
-              'height': 512
-            },
-            {
-              'url': 'https://dgtzuqphqg23d.cloudfront.net/2OLx08jatv7IOG71i4bOb5iWiyBpi_T1PI9ZUBS8_M8-384x512.jpg',
-              'width': 384,
-              'height': 512
-            },
-            {
-              'url': 'https://dgtzuqphqg23d.cloudfront.net/5ACjXTdFTkw2xe0z9PZdchpvPrZoYSAslE47u_PwE_A-512x289.jpg',
-              'width': 512,
-              'height': 289
+              'id': '2e0b0eb3-b8f4-4b56-a9f1-e4b47b5f6b22',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/c6MwBtm76DVwoWAd8heBcPAaABlJ6ox8KXklbaauChI-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/c6MwBtm76DVwoWAd8heBcPAaABlJ6ox8KXklbaauChI-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
             }
           ]
         },
@@ -127,7 +127,29 @@ export default new Vuex.Store({
           'distance': 14317.8,
           'moving_time': 7682,
           'elapsed_time': 9198,
-          'total_elevation_gain': 753.3
+          'total_elevation_gain': 753.3,
+          'photos': [
+            {
+              'id': '04a2a1bb-ed79-4bc7-9130-eaa8f0f5e88e',
+              'caption': 'Bra med løping etter noen dager seig trasking',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/YZwEEVgy4AsrpohN4a_J62iIIceSsW975kKc__LvXFw-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/YZwEEVgy4AsrpohN4a_J62iIIceSsW975kKc__LvXFw-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
+            },
+            {
+              'id': 'c922ecea-13a5-4406-a603-49cc59448518',
+              'caption': 'Nye La Sportiva på tilbud. Tåler en støyt uten å være stive.',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/2OLx08jatv7IOG71i4bOb5iWiyBpi_T1PI9ZUBS8_M8-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/2OLx08jatv7IOG71i4bOb5iWiyBpi_T1PI9ZUBS8_M8-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
+            }
+          ]
         },
         {
           'id': 634190812,
@@ -139,14 +161,14 @@ export default new Vuex.Store({
           'total_elevation_gain': 1321.5,
           'photos': [
             {
-              'url': 'https://dgtzuqphqg23d.cloudfront.net/z-B20hFvFAOSiVFQ5T7C4D3Px2JZ2DF9dbRNnazs7lg-384x512.jpg',
-              'width': 384,
-              'height': 512
-            },
-            {
-              'url': 'https://dgtzuqphqg23d.cloudfront.net/WPY4Q-AMzTF-AXNom9xRVXnxw0hhFRLcrN5F5BnwNug-512x289.jpg',
-              'width': 512,
-              'height': 289
+              'id': '07df8d7f-a7b5-4c6d-82d9-a7553510617c',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/5ACjXTdFTkw2xe0z9PZdchpvPrZoYSAslE47u_PwE_A-2048x1158.jpg',
+              'width': '2048',
+              'height': '1158',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/5ACjXTdFTkw2xe0z9PZdchpvPrZoYSAslE47u_PwE_A-512x289.jpg',
+              'thumbnail_width': '512',
+              'thumbnail_height': '289'
             }
           ]
         },
@@ -160,9 +182,14 @@ export default new Vuex.Store({
           'total_elevation_gain': 343.3,
           'photos': [
             {
-              'url': 'https://dgtzuqphqg23d.cloudfront.net/DoCoVeA8OO8O9zG4BpYR6yKTuIiX4464k4KN21JRA9o-384x512.jpg',
-              'width': 384,
-              'height': 512
+              'id': 'c01b098b-576f-42c0-b551-0c8bed1f6220',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/z-B20hFvFAOSiVFQ5T7C4D3Px2JZ2DF9dbRNnazs7lg-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/z-B20hFvFAOSiVFQ5T7C4D3Px2JZ2DF9dbRNnazs7lg-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
             }
           ]
         },
@@ -173,7 +200,29 @@ export default new Vuex.Store({
           'distance': 16891.5,
           'moving_time': 14096,
           'elapsed_time': 23084,
-          'total_elevation_gain': 988.4
+          'total_elevation_gain': 988.4,
+          'photos': [
+            {
+              'id': '2cef431b-1f9f-4a04-a43b-9dc68df71e09',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/WPY4Q-AMzTF-AXNom9xRVXnxw0hhFRLcrN5F5BnwNug-2048x1158.jpg',
+              'width': '2048',
+              'height': '1158',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/WPY4Q-AMzTF-AXNom9xRVXnxw0hhFRLcrN5F5BnwNug-512x289.jpg',
+              'thumbnail_width': '512',
+              'thumbnail_height': '289'
+            },
+            {
+              'id': '0d130ec2-f207-4ff9-8a5e-3640dd3c5e0b',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/DoCoVeA8OO8O9zG4BpYR6yKTuIiX4464k4KN21JRA9o-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/DoCoVeA8OO8O9zG4BpYR6yKTuIiX4464k4KN21JRA9o-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
+            }
+          ]
         },
         {
           'id': 637507924,
@@ -185,19 +234,14 @@ export default new Vuex.Store({
           'total_elevation_gain': 985.2,
           'photos': [
             {
-              'url': 'https://dgtzuqphqg23d.cloudfront.net/0fYY3yisPLcAaGqgzI6Zb9EEOgJoSFmH00yZ_x8dnXA-512x384.jpg',
-              'width': 512,
-              'height': 384
-            },
-            {
-              'url': 'https://dgtzuqphqg23d.cloudfront.net/An928CpGLdAKDRoiKVQd2M2slAEVZoadci1MlzkpedY-384x512.jpg',
-              'width': 384,
-              'height': 512
-            },
-            {
-              'url': 'https://dgtzuqphqg23d.cloudfront.net/A6J-gHmb4VxLXiZc7nhn4_0kmCVDft98Yz-5hP82syk-512x384.jpg',
-              'width': 512,
-              'height': 384
+              'id': 'bfbb6bde-977d-43a4-a877-a7b31f945873',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/0fYY3yisPLcAaGqgzI6Zb9EEOgJoSFmH00yZ_x8dnXA-2048x1536.jpg',
+              'width': '2048',
+              'height': '1536',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/0fYY3yisPLcAaGqgzI6Zb9EEOgJoSFmH00yZ_x8dnXA-512x384.jpg',
+              'thumbnail_width': '512',
+              'thumbnail_height': '384'
             }
           ]
         },
@@ -208,7 +252,19 @@ export default new Vuex.Store({
           'distance': 22394.2,
           'moving_time': 19591,
           'elapsed_time': 28228,
-          'total_elevation_gain': 1346.5
+          'total_elevation_gain': 1346.5,
+          'photos': [
+            {
+              'id': 'cec2d32e-8dee-4888-ac94-d2ad0238edef',
+              'caption': 'Tullete mange høydemeter',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/An928CpGLdAKDRoiKVQd2M2slAEVZoadci1MlzkpedY-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/An928CpGLdAKDRoiKVQd2M2slAEVZoadci1MlzkpedY-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
+            }
+          ]
         },
         {
           'id': 639551838,
@@ -217,7 +273,19 @@ export default new Vuex.Store({
           'distance': 13611.5,
           'moving_time': 15027,
           'elapsed_time': 18875,
-          'total_elevation_gain': 1632.7
+          'total_elevation_gain': 1632.7,
+          'photos': [
+            {
+              'id': '5eea5fc1-ac7d-494e-a0d6-83d33e125536',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/A6J-gHmb4VxLXiZc7nhn4_0kmCVDft98Yz-5hP82syk-2048x1536.jpg',
+              'width': '2048',
+              'height': '1536',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/A6J-gHmb4VxLXiZc7nhn4_0kmCVDft98Yz-5hP82syk-512x384.jpg',
+              'thumbnail_width': '512',
+              'thumbnail_height': '384'
+            }
+          ]
         }
       ]
     }
