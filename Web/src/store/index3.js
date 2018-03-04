@@ -1,0 +1,331 @@
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+
+const debug = process.env.NODE_ENV !== 'production'
+
+export default new Vuex.Store({
+  getters: {
+    activities_count: state => state.trip.activities ? state.trip.activities.length : 0,
+    total_moving_time: state => {
+      if (!state.trip.activities) return 0
+      return state.trip.activities.reduce(function (total, item) {
+        return total + item.moving_time
+      }, 0)
+    },
+    total_distance: state => {
+      if (!state.trip.activities) return 0
+      return state.trip.activities.reduce(function (total, item) {
+        return total + item.distance
+      }, 0)
+    },
+    total_elevation: state => {
+      if (!state.trip.activities) return 0
+      return state.trip.activities.reduce(function (total, item) {
+        return total + item.total_elevation_gain
+      }, 0)
+    },
+    longest_moving_time: state => {
+      if (!state.trip.activities) return 0
+      return Math.max.apply(Math, state.trip.activities.map(function (item) { return item.moving_time }))
+    },
+    longest_distance: state => {
+      if (!state.trip.activities) return 0
+      return Math.max.apply(Math, state.trip.activities.map(function (item) { return item.distance }))
+    },
+    highest_elevation: state => {
+      if (!state.trip.activities) return 0
+      return Math.max.apply(Math, state.trip.activities.map(function (item) { return item.total_elevation_gain }))
+    },
+    photos: state => {
+      if (!state.trip.activities) return []
+      return state.trip.activities.reduce(function (previous, current, currentIndex, calledupon) {
+        return previous.concat(current.photos || [])
+      }, [])
+    },
+    polylines: state => {
+      if (!state.trip.activities) return []
+      return state.trip.activities.reduce(function (previous, current, currentIndex, calledupon) {
+        return previous.concat(current.polyline || [])
+      }, [])
+    }
+  },
+  state: {
+    trip: {
+      'id': 'Qp2bJecvhUaLgHH-WdgG9g',
+      'maptype': 'satellite',
+      'title': 'Madeira 2017',
+      'subtitle': 'Anders & Hilde',
+      'activities': [
+        {
+          'id': 1334905713,
+          'title': 'Rusling på Madeira - Tur/retur de 25 kilder',
+          'polyline': 'ii|fEviqgBb@_@Z]`AsBLg@DwAV[\\WJg@AeCSc@[_@L{AKe@Qo@CSMI?j@EXOh@i@TEJEJMtAMPe@?a@Fk@PWh@WNa@Rc@D]ToAn@KE][]QgAXc@DU?OCc@@[GG@Of@U^a@T_@Oa@FMp@Ch@GLc@@c@Ja@Nc@H[Xe@t@_ATa@RW?e@Fa@VQb@MDe@@_@RgAVe@G[Yk@]Ua@cA][US_@A`@t@v@Xp@R^LvARrAINV|@[_@Me@MWY_@a@YU]a@Wm@o@U]Y[Wc@Uc@Fg@DGDi@Ne@X_@Pc@|@i@HMD[Mg@Ke@Hg@Pa@MsANc@Ai@QO_@QIe@GEZUAwATc@[_AAQDm@Hi@Tc@Dk@t@E\\GAe@Xa@Z[XkAX_@Li@Gg@a@QSCKKTi@D?Nc@GA?B]T[g@E~@EFJKAG[ZcAP_@TYVOF]KMW_@MQNa@Ka@OCV]EOB[GQBIL?LOXAd@c@COLU~@U^Ml@Ub@Gh@O^Md@O@CFBPEJ?bAG@ARq@f@Bx@SPgA`@W`@Y\\Y`@[Z[OKg@?i@GuABi@Tc@p@}@^SPe@Va@\\[Va@\\WXc@Am@WkB[YK]Di@KQC[BMFA@DAOKSXHMSCYOKBP@A?BHEIEDDICT`@GGGMIBAHQb@Cb@JZA\\KBDPSROd@S^DPSSE?H@LRYCa@NgARc@Ae@Be@Cc@H_@Rc@ES]AUWBQCMg@Iq@@SAC@YIg@e@g@Oe@]IL[CIMHB`@b@d@JBHh@Jf@@RCJJf@Td@`@RX\\R`@b@I`@Q^Gb@Cd@Fh@?ZEL?dAa@LJ?IEE?MF}@NEHY^QBWZLANBFHN\\VRd@LvAAj@Mf@KX]\\c@R[ZIb@W\\_@VS`@o@`AIXCTJvAd@pAAj@Bn@Fh@Lh@?JCLA^?l@I`@?LP\\k@G`@N^ZM\\@VEQEPA\\O?Jd@DH_@?T`@B`@[PCc@_@A[BRn@DBOCRNEZDj@CFl@RXTFER@DJC_@JC^f@h@\\TKBGXJFGDa@o@SAGOGIKBk@Z_BVSHS@YN}@FST]?MDSVIMBQC@k@Hi@FCBMAIb@EPJEH@L\\MCLJJD@RGANHMDAL_@?EQc@XKRZ^GCj@DNRS@F?`@R?P]N`@BIZOb@DX[P[@UEY\\a@JABGOULm@@SXo@@UFQPP^BTRPVFp@ClAAZOLBj@Hd@AVFBGj@KJEN]RKPu@n@MVGp@MRKRBj@Rv@d@ZNXRRp@ZDNXVNb@ZLJLFh@BFFH^LBJ@\\OeAKi@U}BOg@Y]][Uc@GEIa@BGLRNH~@J^\\JNj@XHJ`Ab@z@Gd@Ud@CVId@u@b@Id@C`@Ob@K^WLg@Pe@b@I^S\\Wb@E`@?Dk@Ck@LUb@E^Vp@UPy@LOF?d@FbACJ@`@Er@a@TXB?^VTJb@E\\WXa@n@]NOLGv@{@b@OTE^NN?Pa@Fm@b@SJU\\Wj@Sf@DCUc@i@@h@Nf@DZEv@CHFf@l@`A@VCf@F^K`@G^GLSHK@YZBtAKf@Ub@?Di@bAYb@[ZG@IP]XY^KBEAAM',
+          'distance': 11019.3,
+          'moving_time': 10468,
+          'elapsed_time': 15148,
+          'total_elevation_gain': 967.4,
+          'photos': [
+            {
+              'id': 'ddd61747-e390-426a-8466-07d97664f03c',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/gdA2DgfS9bBpBmjTMFyr9nopudqMLda8dbvgyycVjEo-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/gdA2DgfS9bBpBmjTMFyr9nopudqMLda8dbvgyycVjEo-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
+            },
+            {
+              'id': '673b1350-8dd2-4fe9-8c03-800f93c8384c',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/fBTWmBbfU-1Jm0vg6EloQXT-TZ9OyHmmc3H4lakkrVQ-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/fBTWmBbfU-1Jm0vg6EloQXT-TZ9OyHmmc3H4lakkrVQ-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
+            }
+          ]
+        },
+        {
+          'id': 1336136814,
+          'title': 'Ponta do Pargo opp og ned',
+          'polyline': 'asggEnsghB|@j@^DHZP?R_A_@LK@GGO@c@I]UcAw@aAe@]YiCeBWGW]M]EIQq@@Q`@eACi@M_@O}ACe@@_AQyBDi@`BeCPg@Jg@a@IcAN]V[@c@GcACe@De@XQb@Mx@Cz@If@Mf@WrAUd@]Na@KmBWK?sBdAcAx@_@ViALKA}@s@B_@b@iA`@uATc@d@mAl@iA\\a@JY`A_Db@iA\\gAz@mE^mAj@eArAsCL_@p@_BpA_CtAoEf@iA\\qA`@{BFyCHuAHg@@i@h@mC@k@\\kBEGRb@EUm@e@Sc@Qg@Mg@[]_Ao@MEe@AMHc@Ju@Ag@RIGYo@EWJi@N]^o@FQDy@La@@YKMWa@YW]Ta@NSGa@q@a@Ka@Pe@Da@KgATWLW\\[jAs@xBSJWMSBSa@Ky@Em@Bi@l@iB^oANmB@YHsA@k@Ag@GUUc@o@_ACi@Ji@`@cA@WFY_@XaA^Se@Me@GIcAaAgAu@YWIXPd@NJTb@`@fAFh@Qr@MPCh@A^P`ABx@Kh@]~@q@x@]Ta@PG?Ya@Kg@Wc@EMCm@?UQI]}@U]e@h@_@X]Hk@E@@Gh@?h@Aj@CJS`@SP]dAUrAY\\iAKQMg@Eu@D_@\\[JMAIGCUSk@OeAEgBFk@Lk@?i@Sa@[h@y@X_@XQf@e@~@[p@Mf@Sd@[^IXoA|BMZe@vBa@`@Wb@SRYl@KHCBa@BOCI@|@hAa@]o@u@KUNmC_@uAB]Tc@PSVSbBy@ZYNe@Nu@Vq@LcAAs@Bc@P]r@aDHwAAs@BQ?UHg@Ii@GMECSDsAfCMVY`AY\\cAVi@jAGf@W~@UXiAHc@JkBQQc@BuAe@Aa@Qc@Gc@Dc@J[@gAM]Wa@hAm@hAOj@?x@JlB?fA]nBE`@Oh@_@bCi@fBG|@Ub@Qf@QhCAj@Lf@K^ARYZ_@Re@FY@gAYeAa@ODMl@Ej@Bh@f@|A@`AH`@DtA_@dBIh@QRS@L@OXk@bAYRKh@y@bCU`@s@v@[n@A?Zu@dA}ANw@\\_ATa@Pc@dAaBCJB@JKJA^U\\CFGVKb@KRVADBI`@Nb@B`@@TGNRAFBNMh@Qb@a@`@Sd@?h@Bj@Sb@Eh@L\\Rz@Bn@X~@FJPNj@Vd@Jd@F`@LRPz@`@V@VCV@b@Hr@d@r@Zb@JJ`@BxACj@Kf@Ch@Sv@_@Rc@Lc@He@CsALS?YRKRM@j@i@fAOd@@VId@@`@K^UVa@Je@RuB?k@KgABGHC^Yh@m@LQFQj@mAZYHExA{A^M^RFf@?^Hj@AVApAGDAHDJTRb@DHATTXtA\\nAVn@l@v@Xf@Z^FDb@LRERWZY^Lx@z@`@f@b@Xh@F`@KPU`Aw@~@k@VCb@@h@F|@vBDvA?j@Lh@Hh@@j@Ob@]X]^bB^hBT`@N^Rh@Pb@@l@IfAJn@m@f@m@b@CDDH|@VtA@\\Jh@Hz@n@v@TP`@PLNFBd@EPIPCvAq@jBoA^Op@@^DbATZUTa@XqANg@Fi@@cAFk@Pe@b@c@LGjAGd@Dd@NNCLK`@Od@?d@DLFBVERQd@_@v@Y^a@`@KREZRbBB~BFh@HhAJh@Kh@Qd@MTBVf@pADOAKHOLg@JOSRBRIf@Tb@~A~@~@l@PNv@d@`@PJN?X',
+          'distance': 14437.1,
+          'moving_time': 11675,
+          'elapsed_time': 16612,
+          'total_elevation_gain': 653,
+          'photos': [
+            {
+              'id': '108b61c3-3986-4de6-a47f-c4e2d3030d53',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/wOtA9Lz0gQ2lPCFUdTrLgD68-LTIAQRUSSAWv7AbS_o-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/wOtA9Lz0gQ2lPCFUdTrLgD68-LTIAQRUSSAWv7AbS_o-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
+            },
+            {
+              'id': '34f55881-24a3-4099-9ea6-a904d8edfa84',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/4ElaqSydZ11ASw6alxRgIni7Y3UIfFf8ALRvVUFyVO8-1638x2048.jpg',
+              'width': '1638',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/4ElaqSydZ11ASw6alxRgIni7Y3UIfFf8ALRvVUFyVO8-409x512.jpg',
+              'thumbnail_width': '409',
+              'thumbnail_height': '512'
+            },
+            {
+              'id': '8810114c-2265-46ff-a383-1a2acfbbd6d1',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/2pyTGUcNlBqrn4WwSPFFLMbiWa636ajtHLjZVlTCkWo-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/2pyTGUcNlBqrn4WwSPFFLMbiWa636ajtHLjZVlTCkWo-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
+            }
+          ]
+        },
+        {
+          'id': 1337374058,
+          'title': 'Pico Grande - Den bratte ruta',
+          'polyline': 'y_xfExrqfBv@Ih@DL`@A`AHn@PFa@PYf@[XIh@[Xc@F}@Ac@JY\\Sb@?X`@NL^[XO?[Ve@Ba@Q]mAa@Oa@J_@b@MHb@~AHpAAXCDL^f@|@Qb@Ix@]Tc@H[VS?B@h@I@N_@~@Va@BHGd@JY\\GGVKPb@Bd@A`@Kb@Q\\U?f@Ef@q@z@@JNJC\\K[TFLLFe@`@K\\YLU]lADj@HOZW\\UD@QjAJd@Na@V`@@h@Gf@_@\\a@LIF^@NVc@Pa@JcA\\Md@W^G\\d@MS^HMGZBMKSNLHC_@ZEKl@YX_@^QIv@_@VOb@TGFBR\\NDNJH\\PKCf@HGR@JLH?Wk@S^o@z@D??@WTRNAMQPm@NWXb@EFR[XITDC`@AFtAJd@Bd@Od@KzADd@TNb@C^JX\\Pb@Gb@Ff@?f@b@VXZPTLn@_@hATb@\\TCh@Hb@Ld@VPb@HVTHJ\\Tb@ANFZCPJ?Hk@HQA[NYA_@E_@QeAYa@QKe@e@m@QFYQDwAGg@[C]T{@`@c@Em@KMQ]QKSm@s@UHYMMR[TIb@Eb@U^I^Ab@?\\Db@GbAm@JBZAd@]dAQhAmApA_AP@\\YV}@d@w@P]N@QCRF?OJCF@B@WHIJTD?GAFUTBPQx@c@j@g@H[EQjAa@\\Wf@g@d@eBP]@}@LKZDFL~@d@^AZSR[H]DALFY@i@TOXK\\TXXHGHTEXZ`@EBMINc@EWY]O[Ke@Aq@k@C]DKFe@EcAH_@Fw@TWBYFOLw@NCJM|@CFGl@t@L`@NE`@TTE\\L`@AtAg@NT^RD`ALb@j@TT`@x@n@RDNJJ@HFJPOL`@@b@O\\@VOoBGY_@{@s@I]OYASDa@?U_@WGg@TsAAEIGUc@[Y[MIIGq@Di@Ki@Yi@EAW@SI_@@USGOJc@TYP}@?e@Qg@AU?s@Oe@]QM?IEv@a@c@GM@@WbAUVFW[ZKAIZWRk@m@FFa@CIYPAc@SXCKA]CCKR@CGUGOAR@ISOCDA?Fe@h@[HS@SE?GPQRKJUFEFEEAMFELCE?KGDCQ@d@{@N]PIx@Qf@a@EYc@AJS`@UFGFYAg@GUIS?TQc@DYNSFYc@\\OFKV?LGUBa@\\k@DMI?_@\\c@POAGDBf@a@YMS?EL[`@SNa@Fe@M@]TSASB[NMAy@JDQ`@]g@GKJMREBAQLc@]TCCDS\\WUEKBJWX[b@E^UAi@X]@MSa@III]IEAGNGBGMa@Gy@GMEg@KW?KGSDGPFf@_@b@GJ?P^Nf@VT`@KZ?VE`@MBIa@Ka@SDg@r@_AZSTJd@Dj@APKX]Di@X]^m@Bi@Ii@?m@K]{AT',
+          'distance': 10155.5,
+          'moving_time': 11341,
+          'elapsed_time': 15080,
+          'total_elevation_gain': 1224.4,
+          'photos': [
+            {
+              'id': 'd8c52579-7a49-4384-9b49-122cd7f7b9be',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/OBK0MhF832d1m7BIG3wlPvuSoc-nKaD0pEA8BenHiDg-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/OBK0MhF832d1m7BIG3wlPvuSoc-nKaD0pEA8BenHiDg-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
+            },
+            {
+              'id': '088fc8eb-37b8-4def-b8e4-d02fb0de635f',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/3zBWkPFd2dj8cu_GGyvS5vFeIPrbVxoQimkOTpquvEc-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/3zBWkPFd2dj8cu_GGyvS5vFeIPrbVxoQimkOTpquvEc-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
+            },
+            {
+              'id': '084a3e6d-2003-4947-9719-37d1acf37b57',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/56UV6Ldpau769jF2NXFjOxcKUZuRl_WKAAyH-WYxW24-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/56UV6Ldpau769jF2NXFjOxcKUZuRl_WKAAyH-WYxW24-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
+            },
+            {
+              'id': '0d1bf551-d685-45f5-a083-f46ae312a304',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/4HbhDeNXrlw17YZZ2CaMfKdhoWho9_Dcn7ukVj8CJ_A-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/4HbhDeNXrlw17YZZ2CaMfKdhoWho9_Dcn7ukVj8CJ_A-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
+            }
+          ]
+        },
+        {
+          'id': 1338981533,
+          'title': 'Ponta de São Lourenço',
+          'polyline': 'ozyfE`g}dB[IKKe@Y[I[SO?OKeA}AOg@KOkAeBUWg@SWLE?GW]Q{BHiBW_BgAWk@MMIS]eBQe@GIU_AEGk@a@[g@q@u@S_@s@m@_@Ua@Li@Fa@PONi@Wi@QUCYOUBQLK_@Eg@WWSYM]BYWy@]B[HYPIAq@y@e@cA?UI[F?JG@G_@kA?q@Hg@O_@CAKIGSPaA?UVa@r@g@j@MRHR@|@A^Uf@Ax@YHc@K]Wg@Uo@?MEUGq@Ha@n@SD@^WJM`@OTCd@Bb@D^HHCV[TqAZs@HKPQz@c@DFTEAIPu@D@@GT]h@wAPuAJg@JWJm@JgACg@Ma@IAWa@[[SIKSLc@HGDMX]b@y@^Qb@BnBgATKTUL@GIKi@E}@Fi@Ak@dAoDPc@Bk@\\]`@m@ROx@y@xAqBTc@@QC]KGLBN@FE\\c@NEPVHh@JVNl@XZb@@ZRNd@b@DXYdAs@b@D^Pb@@T{@JSX]L_@f@cAZYT_@r@i@b@AVE\\C\\G^[CRaA\\c@AOF]A]T[Zq@`AS`@YPIf@QNM^Kl@M?m@Oc@Ea@Nk@`@KPSPMFML@HXl@\\VPRRj@X\\CZ@`@[V[U_@HiAnAUn@DJSXe@^WDEX?RT\\RBAFQCYOKLGAa@NYZI?ICIDK?]VUBU\\Ob@_@Ua@Ko@Ok@I]U[LIJ[JUV_@VOB_@Pc@Be@D[|@_@VIv@Nd@`@^@JPLRv@GpAIv@Sr@Ef@EFGh@_@jAo@x@[bAa@N_@TYZo@hCOTg@@a@Kg@Au@Be@ZUVa@DEFUDAj@Hv@F\\b@xABf@URG?k@Xc@F_@PoA?QE]DUPUHi@j@Kh@IR?NPPPFDNKf@AvAPPf@v@l@H\\C~@P^PJJTDDDbAZ`@MFFEr@YrABj@AXGR@`@@DXP^L`Af@JK^WdA[^RPP\\`@T`@XPtB|BZ~@DTPb@TpAXb@Rb@XV\\XZXb@Jb@Dd@@d@AZ?t@Eh@PJ\\JS`AZTZP\\`@fA@J\\RpA`Bx@t@v@`@v@d@?G',
+          'distance': 8229.3,
+          'moving_time': 7577,
+          'elapsed_time': 10342,
+          'total_elevation_gain': 535.8,
+          'photos': [
+            {
+              'id': '9cb340c4-febe-469e-bbc8-04a8537b4b1e',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/oiFsToPzHAyA-7j4w2HF5Ru2JQNH4NnJqMiT_x30eU4-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/oiFsToPzHAyA-7j4w2HF5Ru2JQNH4NnJqMiT_x30eU4-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
+            },
+            {
+              'id': 'bbef3e8e-19a3-4887-b0fd-a9c4731028b2',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/Re0AOcA3_D9Cm_Am3USXjDrzxcz9kwdelxvdQsVsB40-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/Re0AOcA3_D9Cm_Am3USXjDrzxcz9kwdelxvdQsVsB40-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
+            },
+            {
+              'id': '9b72240d-a4bf-4c04-bb6a-9befc7f4ef47',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/qRXIThv6TBB7gSIUbDpJcz-FHyl9NGuI_g97AsZ1sVk-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/qRXIThv6TBB7gSIUbDpJcz-FHyl9NGuI_g97AsZ1sVk-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
+            },
+            {
+              'id': 'a722112f-033a-4698-97df-cd9a391e5f40',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/R7u7rBUi79YGUhQb7rVQxp79wxD5UHw9B3FQQVvvuGc-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/R7u7rBUi79YGUhQb7rVQxp79wxD5UHw9B3FQQVvvuGc-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
+            },
+            {
+              'id': '59e714e4-4e61-4417-b20a-e188ffe669b6',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/ZRU1lk57nnKgfaaUWKvq5O2ZEyakpUWX6Tbzgh_RI_s-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/ZRU1lk57nnKgfaaUWKvq5O2ZEyakpUWX6Tbzgh_RI_s-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
+            }
+          ]
+        },
+        {
+          'id': 1340753090,
+          'title': 'Fantastisk tur mellom Pico do Arieiro og Pico Ruivo ☀🗻',
+          'polyline': 'srxfErkifBQEBHBCUHc@`@]t@[`@O^Ev@O^E@Sd@UfASf@CPCbB[nAYj@[VK@w@d@IB[VW^aAn@[x@G`@MVIf@GDWHIMo@^]?KDc@AY[]S^N\\\\^T`@ALI^IAb@CDIb@EbA@d@SZUb@k@dDCd@Md@Ch@MfACBBFKjAGN@l@Ip@Ad@EL?Bw@j@UHMGWx@a@?QTEMGH]P[VAh@CFG?Fh@Sj@MTCTI[Jg@Qe@S]a@BKa@i@a@WBo@\\a@Oa@JI?VRbAZ\\DhATaJkEM\\IDCk@KKKBI`@UGGMOEq@hAK@UU]Sc@H_@SOQ]Wg@tAsAvEAdAeAnDc@hADKQP@BOXLq@@WJYIaBVoA`AiCIa@yIvSIXAg@CC]UO?KWQQnHkCu@wCaAuCi@m@MCKo@DMqAcAE?e@UL`@YXYDITBMeAKuHz@KHI@Ks@FUVBiAy@ASQWc@[YMVJGL?Jk@g@PFQLKKa@B_@MG?K`@Fb@{@LEH@PKLKDQNLe@K_@QA]Yo@ASFWC]SSXcAnC_@^e@b@Yj@b@sABYCm@Mg@d@}Au@v@E\\BZSPG?S^YFJ?G`@Ad@Bh@Aj@HCKRc@EKe@YYS[i@Bc@?c@JWQ_A[g@i@Ma@a@DSJWKAW@YL?J[CWYWkAGa@?YSe@s@CAMYWnAk@bAUJa@KY?Vb@XX_@I]Wm@k@a@K[@_@Pa@O[TYXm@x@]pAYT_@E_@S[]e@}@?rAV\\Rd@DTLRNd@T\\FAb@@RP]ZW\\c@Ja@EY_@w@l@Ub@L^Qd@RVZxAE^M^PrA@j@Gh@NS?FRKTAPh@Ng@V[BPVXb@J^KZ]Hg@OMW\\GP^cAXWJUNKf@s@Xq@IO?_@Bj@Kh@o@|@_@REJQl@AXEH@CDBIAJ?CUPGCh@Qd@_@PeASIc@CGc@bAM[QOGTYDEGKLAKF}@OwAVmAA[OeAa@GCOHCA@?CN@Fg@QKVu@ZYZQb@Xb@AZUZ[RYy@C[MKg@Se@Ki@UUMWNaARl@^P~@^`@IJ[Dg@h@aA\\YH_@`@AF@~@_@`@H^TVJp@v@Oa@GG[M`@Ib@E`@q@Z]Va@?EL@XZnAh@J?p@TZR\\NGn@ETORIDL^ZN`@@NT\\fAb@N^Bb@LJHFE?L\\YfACt@x@Nd@JJ?DAm@Dk@l@_@Lc@_@[MOn@eAGMRc@Ne@NyACENa@b@IJV\\DNj@TOf@V`@@RGTOl@LRVLR?^B@HOBYRe@Ra@ZUB_@RIDFB\\DJZTL??G@Zh@XHAMOb@GDLVN\\JHAAJ]^WLzAJp@r@BFY[]VfKcCt@p@b@DJGBQS_@@@C?EkAHQD]Ne@`@?ZYd@Dz@q@JDBBN?DDABzD@EGTI`@HBHEJLDDRd@Zb@JZ@f@`@RXZKj@RFJNLTBPKNOJ@TGD@XVASXS^VJ`@D?EE?Wb@H|DbFlB|@hADHQoACYJcAgBHwBRMZKV\\Jl@^P`@G\\VPx@@XR\\CYBk@RWGSHUGi@X[ZMNQ`@CNMBYl@[b@sBDi@AIJWPu@B_BLs@LoAVeA?Wf@gBZ[C[FSCoBH_@g@b@Y@_@Q?IxAg@b@GBC^I[QOe@p@S\\]Xa@lAaAX[x@q@d@MZ]\\mAFk@?k@Bk@`AuCR]?m@f@sAp@}@LULOHCD?',
+          'distance': 12499.4,
+          'moving_time': 12341,
+          'elapsed_time': 15219,
+          'total_elevation_gain': 1664.5,
+          'photos': [
+            {
+              'id': 'b3af1518-5abd-452d-8a52-246cfad27692',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/MNgBlxeatzUjIA_hGCRU7lTgNE746jQBRath80DiARM-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/MNgBlxeatzUjIA_hGCRU7lTgNE746jQBRath80DiARM-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
+            },
+            {
+              'id': '0b6f480a-6027-4e15-8cf6-9549dd235980',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/4_at2UGWBpnQcfdHxDIw0uxFJAzJqj1Lpnlz_rEoHzs-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/4_at2UGWBpnQcfdHxDIw0uxFJAzJqj1Lpnlz_rEoHzs-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
+            },
+            {
+              'id': 'd07dcf26-694b-4aa9-a666-1720c58efd5c',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/GAgRtv1vwANJkDGTjiyQ6UxRy340Z6FP-lNQGbtCx4Q-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/GAgRtv1vwANJkDGTjiyQ6UxRy340Z6FP-lNQGbtCx4Q-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
+            }
+          ]
+        },
+        {
+          'id': 1342027220,
+          'title': 'Levada-tur og dugnad',
+          'polyline': 'uohgE`shfBB?p@v@\\X^Nd@Fb@?PH[z@F@IKHGj@aAb@GP\\Dd@P`@v@c@d@A\\WRg@OmAKi@?i@Bm@b@CJh@Dh@Tb@XZCh@?zAEf@W\\Of@GtAYpAGh@Hf@^XT`@J^GXMXK\\L^BFHBJJHEJQj@@HKHe@b@[BGEc@TwADEt@LLQE}@JAHH\\f@Pd@^TX`@@l@?j@f@jAZZEXHh@T^@j@^@\\^Nf@Zn@?TH`@JTJHHLEZ@LVj@FVRP^lA^XV`@XT`@NTPL\\VUDHLB\\j@JX?^Jb@Z|@JN@FObAHj@Mj@BJFNXVA^JtAJh@Pd@V^h@Lf@fAQd@Ih@Cp@GBOXZDFFDHNl@LVG\\Jh@Xh@LDBHt@X\\TJ@NABH?j@Lb@NRFFXb@RPHNJHZHd@rAX]@i@g@iAOe@Ai@@i@UWOe@@a@Vm@Ng@V{AZ[R@h@u@BWCGBs@`@m@Eg@@y@CCLa@Og@e@q@[]IG_@q@IY@G@CZMLATONe@VON@XRLD`@f@Nf@PPFP\\^b@F`@h@HBTXC[Lw@JSE_@@y@TIz@PLJHz@JERD?V@CCNhAu@Ih@Uh@Za@E?FIYb@MFDIA?MJKXACHITc@HGCFNIQF@SCAIZFFJ?LKDAn@q@^Q^c@JFVDFf@RB\\Eh@DR`@f@GPNFJBF@j@P^V^l@BDCNJJ~A`@FRONMZLVVDd@f@PVA`@WTRVb@b@XNXDTP@HGl@GCJXb@p@b@VSTEPD@B?f@RUa@hAGFP}@NS?BKc@P_@^k@@n@o@t@LYd@Uz@K|@CPLLd@ZNLPPd@TRVp@L|@X`@b@Nv@kAXEAFRSZc@Z]\\UZ]y@VBbBn@u@V@k@TDNEXU[Is@BUz@?SFc@@]n@YZ]XiATY?Tg@_@MYg@SOc@o@ECIIq@S@QA?Eu@OEg@Jw@ZGR?X_@d@GF_@?q@l@DG?B@Q`@wA@QQ\\?KMVWg@[[q@[e@By@x@c@De@HKOKo@e@BUL[^Iq@AYVkBAQEI][WBSJQWG]QSO[o@SQIO[Me@Ya@Mg@]WK@a@GSe@KQYNUReAd@u@BUA[KEIQKOIM@UQSN@A]OE?UMEN?|@Qb@CVa@bABLADEa@EQcAeAa@MYa@Ii@Wc@m@M[PETY^c@Ja@VATJJJb@PPPh@\\^DTGPP`@ENAJQb@CV[fA[XWl@Eh@DDW^ONIb@Bb@YrAb@NEZD^GPKJ?d@RHDZAZVd@@PDDWf@@DDAGBFJEDENDOG_@Se@IGIBUCGYMMEKSK[a@SeA]Gq@e@OUa@OIUEW@YODGMGi@@c@BKSUa@IKWEYFk@Hi@Nk@Cg@]WKC{@yAIsA?{@Wk@E}@WH?MFYJ}@FQ?a@BAOe@MwASe@[Wa@Qa@KUO}@c@SCCIi@k@K_@MUg@yAM_AQ_@[}@Ag@Ii@m@c@KDWKEk@KIKSI_AOOKe@Ui@@]CWQe@W_@aAkBKKIV?\\W@[OMBKVGb@@r@W^Mj@?DEHe@AGFKBUGOIEK?u@Tm@GC{@iAMi@A]V}@Dk@@UEMD]Ji@Z]Bi@GU?SJ{@o@u@BWA_@Ki@_@[G?EJ?RCl@Dj@\\h@AREFM\\AJM\\GDi@Da@l@a@N_@Ca@Ig@@UU`@c@@K[Eg@@c@O_Aq@]i@GY',
+          'distance': 11325.7,
+          'moving_time': 9444,
+          'elapsed_time': 10084,
+          'total_elevation_gain': 1079.3,
+          'photos': [
+            {
+              'id': 'f1b0a887-967c-46f9-8aba-64df431bae8a',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/Q0_fuYiooZOwOs8yKZSPuH89EstksPar7PLro8C6XDU-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/Q0_fuYiooZOwOs8yKZSPuH89EstksPar7PLro8C6XDU-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
+            },
+            {
+              'id': 'ba677abe-03d9-4310-bace-08eb470f52e1',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/jJjBpNEkfm40jqYNz0jfESkWo1moI8E1UqzblspSlBI-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/jJjBpNEkfm40jqYNz0jfESkWo1moI8E1UqzblspSlBI-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
+            },
+            {
+              'id': '5f078859-6198-4424-b631-884a99518435',
+              'caption': '',
+              'url': 'https://dgtzuqphqg23d.cloudfront.net/2wuhtjJDzZOOghIdeKfRwKSwbtMM1Dugh5NifCfp7VQ-1536x2048.jpg',
+              'width': '1536',
+              'height': '2048',
+              'thumbnail_url': 'https://dgtzuqphqg23d.cloudfront.net/2wuhtjJDzZOOghIdeKfRwKSwbtMM1Dugh5NifCfp7VQ-384x512.jpg',
+              'thumbnail_width': '384',
+              'thumbnail_height': '512'
+            }
+          ]
+        }
+      ]
+    }
+  },
+  strict: debug
+})
