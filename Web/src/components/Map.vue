@@ -3,7 +3,7 @@
         class="gmap"
         ref="map"
         :center="{ lat: 10, lng: 10}"
-        :options="{fullscreenControl: true, mapTypeControl: true, scrollwheel: true, streetViewControl: true}"
+        :options="{fullscreenControl: true, mapTypeControl: true, streetViewControl: true}"
         :zoom="0"
         map-type-id="terrain" >
         <gmap-polyline
