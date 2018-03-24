@@ -1,32 +1,22 @@
 <template>
   <div id="strevdeApp">
-    <strevde-header></strevde-header>
-    <image-gallery></image-gallery>
-    <trip-details></trip-details>
+    <navbar></navbar>
+    <router-view></router-view>
     <strevde-footer></strevde-footer>
   </div>
 </template>
 
 <script>
-import StrevdeHeader from './components/Header';
-import ImageGallery from './components/ImageGallery';
-import TripDetails from './components/TripDetails';
+import Navbar from './components/Navbar';
+import Trip from './components/Trip';
 import StrevdeFooter from './components/Footer';
 
 export default {
   name: 'strevdeApp',
   components: {
-    StrevdeHeader,
-    ImageGallery,
-    TripDetails,
+    Navbar,
+    Trip,
     StrevdeFooter
-  },
-  data() {
-    return {};
   }
 };
 </script>
-
-<style lang="scss">
-
-</style>

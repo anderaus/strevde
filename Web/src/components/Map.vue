@@ -1,18 +1,18 @@
 <template>
-    <gmap-map
-        class="gmap"
-        ref="map"
-        :center="{ lat: 10, lng: 10}"
-        :options="{fullscreenControl: true, mapTypeControl: true, streetViewControl: true}"
-        :zoom="0"
-        map-type-id="terrain" >
-        <gmap-polyline
-          v-for="line in lines"
-          :key="line.id"
-          :path="line.path"
-          :options="{ geodesic: false, strokeColor: line.color, strokeWeight: 3 }">
-        </gmap-polyline>
-    </gmap-map>
+  <gmap-map
+    class="gmap"
+    ref="map"
+    :center="{ lat: 10, lng: 10}"
+    :options="{fullscreenControl: true, mapTypeControl: true, streetViewControl: true}"
+    :zoom="0"
+    map-type-id="terrain" >
+    <gmap-polyline
+      v-for="line in lines"
+      :key="line.id"
+      :path="line.path"
+      :options="{ geodesic: false, strokeColor: line.color, strokeWeight: 3 }">
+    </gmap-polyline>
+  </gmap-map>
 </template>
 
 <script>
@@ -27,6 +27,7 @@ Vue.use(VueGoogleMaps, {
   }
 });
 
+/* eslint-disable no-undef */
 export default {
   name: 'StrevdeMap',
   data() {
@@ -35,11 +36,17 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['polylines'])
+    ...mapGetters(['polylines', 'tripId'])
   },
-  mounted: function() {
-    /* eslint-disable no-undef */
-    VueGoogleMaps.loaded.then(() => {
+  methods: {
+    initMap() {
+      var self = this;
+      google.maps.event.addDomListener(window, 'resize', function() {
+        self.$refs.map.resizePreserveCenter();
+      });
+    },
+    updateMap() {
+      this.lines = [];
       var bounds = new google.maps.LatLngBounds();
 
       this.polylines.forEach((p, i) => {
@@ -58,12 +65,19 @@ export default {
       this.$refs.map.$mapCreated.then(() => {
         this.$refs.map.fitBounds(bounds);
       });
-
-      var self = this;
-      google.maps.event.addDomListener(window, 'resize', function() {
-        self.$refs.map.resizePreserveCenter();
-      });
+    }
+  },
+  mounted: function() {
+    VueGoogleMaps.loaded.then(() => {
+      this.initMap();
     });
+  },
+  watch: {
+    tripId() {
+      VueGoogleMaps.loaded.then(() => {
+        this.updateMap();
+      });
+    }
   }
 };
 </script>

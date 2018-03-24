@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
+  <nav class="navbar has-shadow is-primary" role="navigation" aria-label="main navigation">
     <div class="container">
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
@@ -18,12 +18,10 @@
               Trips
             </a>
             <div class="navbar-dropdown">
-              <a class="navbar-item dropdown-item" href="/trips/dhuhudiehwd">
-                Tour du Mont Blanc
-              </a>
-              <a class="navbar-item dropdown-item" href="/trips/dhuhudiehwd">
-                Dolomites
-              </a>
+              <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
+                to="/1151253/trips/montblanc1">Tour du Mont Blanc</router-link>
+              <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
+                to="/1151253/trips/madeira1">Madeira</router-link>
             </div>
           </div>
           <a class="navbar-item" href="/login">
@@ -47,6 +45,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.navbar {
+  border-radius: 0;
+}
+
 .navbar-brand {
   .navbar-item {
     color: rgba(255, 255, 255, 1);
