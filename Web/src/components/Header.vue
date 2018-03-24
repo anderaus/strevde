@@ -1,5 +1,6 @@
 <template>
-  <section class="hero is-primary is-bold">
+  <section class="hero is-primary">
+    <navbar></navbar>
     <div class="hero-body">
       <div class="container">
         <div class="columns">
@@ -41,12 +42,13 @@
 </template>
 
 <script>
+import Navbar from './Navbar';
 import StrevdeMap from './Map';
 import { mapGetters } from 'vuex';
 
 export default {
   name: 'StrevdeHeader',
-  components: { StrevdeMap },
+  components: { StrevdeMap, Navbar },
   computed: {
     title() {
       return this.$store.state.trip.title;
