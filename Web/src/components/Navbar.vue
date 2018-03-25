@@ -32,9 +32,8 @@
                 to="/1151253/trips/montblanc">Tour du Mont Blanc</router-link>
             </div>
           </div>
-          <a class="navbar-item" href="/login">
-            Login
-          </a>
+          <router-link class="navbar-item" v-on:click.native="showNav = false"
+            to="/login">Login</router-link>
         </div>
       </div>
     </div>
