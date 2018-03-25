@@ -16,7 +16,7 @@
               <div class="level-item has-text-centered">
                 <div>
                   <p class="title">{{activities_count}}</p>
-                  <p class="heading">Days</p>
+                  <p class="heading">Activities</p>
                 </div>
               </div>
               <div class="level-item has-text-centered">
