@@ -21,7 +21,7 @@ export default {
   mounted: function() {
     let tripId =
       this.$route.params.tripId === undefined
-        ? 'montblanc1'
+        ? 'montblanc'
         : this.$route.params.tripId;
     this.$store.dispatch('setTrip', tripId);
   },

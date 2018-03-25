@@ -6,7 +6,7 @@
       <table class="table is-fullwidth">
         <thead>
             <tr>
-                <th class="is-hidden-mobile">Day</th>
+                <th class="is-hidden-mobile">#</th>
                 <th class="is-hidden-mobile">Title</th>
                 <th>Time</th>
                 <th class="has-text-right">Distance</th>
