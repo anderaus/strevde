@@ -19,9 +19,11 @@
             </a>
             <div class="navbar-dropdown">
               <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
-                to="/1151253/trips/montblanc1">Tour du Mont Blanc</router-link>
+                to="/1151253/trips/dolomites">Dolomites</router-link>
               <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
-                to="/1151253/trips/madeira1">Madeira</router-link>
+                to="/1151253/trips/madeira">Madeira</router-link>
+              <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
+                to="/1151253/trips/montblanc">Tour du Mont Blanc</router-link>
             </div>
           </div>
           <a class="navbar-item" href="/login">

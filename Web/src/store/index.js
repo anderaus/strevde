@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import montblanc1 from '../../static/montblanc1.json'
-import madeira1 from '../../static/madeira1.json'
+import montblanc from '../../static/montblanc.json'
+import madeira from '../../static/madeira.json'
+import dolomites from '../../static/dolomites.json'
 
 Vue.use(Vuex)
 
@@ -10,8 +11,9 @@ const debug = process.env.NODE_ENV !== 'production'
 
 // TODO: temporary hardcoding of sample trips, should be loaded dynamically
 let trips = {
-  'montblanc1': montblanc1,
-  'madeira1': madeira1
+  'montblanc': montblanc,
+  'madeira': madeira,
+  'dolomites': dolomites
 };
 
 export default new Vuex.Store({
