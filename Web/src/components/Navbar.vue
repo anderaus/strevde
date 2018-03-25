@@ -21,6 +21,8 @@
               <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
                 to="/1151253/trips/dolomites">Dolomites</router-link>
               <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
+                to="/1151253/trips/japan">Japan</router-link>
+              <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
                 to="/1151253/trips/madeira">Madeira</router-link>
               <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
                 to="/1151253/trips/sicily">Sicily</router-link>

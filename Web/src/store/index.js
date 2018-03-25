@@ -5,6 +5,7 @@ import montblanc from '../../static/montblanc.json'
 import madeira from '../../static/madeira.json'
 import dolomites from '../../static/dolomites.json'
 import sicily from '../../static/sicily.json'
+import japan from '../../static/japan.json'
 
 Vue.use(Vuex)
 
@@ -15,7 +16,8 @@ let trips = {
   'montblanc': montblanc,
   'madeira': madeira,
   'dolomites': dolomites,
-  'sicily': sicily
+  'sicily': sicily,
+  'japan': japan
 };
 
 export default new Vuex.Store({
