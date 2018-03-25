@@ -6,6 +6,7 @@ import madeira from '../../static/madeira.json'
 import dolomites from '../../static/dolomites.json'
 import sicily from '../../static/sicily.json'
 import japan from '../../static/japan.json'
+import ethiopia from '../../static/ethiopia.json'
 
 Vue.use(Vuex)
 
@@ -17,7 +18,8 @@ let trips = {
   'madeira': madeira,
   'dolomites': dolomites,
   'sicily': sicily,
-  'japan': japan
+  'japan': japan,
+  'ethiopia': ethiopia
 };
 
 export default new Vuex.Store({
