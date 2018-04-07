@@ -5,7 +5,7 @@
     :center="{ lat: 10, lng: 10}"
     :options="{fullscreenControl: true, mapTypeControl: true, streetViewControl: true}"
     :zoom="0"
-    map-type-id="terrain" >
+    :map-type-id="maptype">
     <gmap-polyline
       v-for="line in lines"
       :key="line.id"
@@ -36,6 +36,9 @@ export default {
     };
   },
   computed: {
+    maptype() {
+      return this.$store.state.trip.maptype;
+    },
     ...mapGetters(['polylines', 'tripId'])
   },
   methods: {
