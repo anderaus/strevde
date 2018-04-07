@@ -7,6 +7,7 @@ import dolomites from '../store/dolomites.json'
 import sicily from '../store/sicily.json'
 import japan from '../store/japan.json'
 import ethiopia from '../store/ethiopia.json'
+import rondaneski from '../store/rondaneski.json'
 
 Vue.use(Vuex)
 
@@ -19,7 +20,8 @@ let trips = {
   'dolomites': dolomites,
   'sicily': sicily,
   'japan': japan,
-  'ethiopia': ethiopia
+  'ethiopia': ethiopia,
+  'rondaneski': rondaneski
 };
 
 export default new Vuex.Store({

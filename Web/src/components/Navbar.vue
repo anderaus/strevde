@@ -27,6 +27,8 @@
               <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
                 to="/1151253/trips/madeira">Madeira</router-link>
               <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
+                to="/1151253/trips/rondaneski">Rondane</router-link>
+              <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
                 to="/1151253/trips/sicily">Sicily</router-link>
               <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
                 to="/1151253/trips/montblanc">Tour du Mont Blanc</router-link>
