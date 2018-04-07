@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import montblanc from '../../static/montblanc.json'
-import madeira from '../../static/madeira.json'
-import dolomites from '../../static/dolomites.json'
-import sicily from '../../static/sicily.json'
-import japan from '../../static/japan.json'
-import ethiopia from '../../static/ethiopia.json'
+import montblanc from '../store/montblanc.json'
+import madeira from '../store/madeira.json'
+import dolomites from '../store/dolomites.json'
+import sicily from '../store/sicily.json'
+import japan from '../store/japan.json'
+import ethiopia from '../store/ethiopia.json'
 
 Vue.use(Vuex)
 
