@@ -1,0 +1,4 @@
+# Netlify-specific. Redirect all requests to index.html to get history pushstate working
+# Reference: https://www.netlify.com/docs/redirects/
+
+/*    /index.html   200
