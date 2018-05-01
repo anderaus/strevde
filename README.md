@@ -10,8 +10,8 @@ Try the alpha version at [strevde.com](https://www.strevde.com/)
 
 ## Example trips
 
-- [Fassa Dolomites trekking](https://www.strevde.com/#/1151253/trips/dolomites)
-- [Tour de Mont Blanc 2016](https://www.strevde.com/#/1151253/trips/montblanc)
-- [Simian Mountains Trek](https://www.strevde.com/#/1151253/trips/ethiopia)
+- [Fassa Dolomites trekking](https://www.strevde.com/1151253/trips/dolomites)
+- [Tour de Mont Blanc 2016](https://www.strevde.com/1151253/trips/montblanc)
+- [Simian Mountains Trek](https://www.strevde.com/1151253/trips/ethiopia)
 
 Made with [Bulma](https://bulma.io/), [Vue.js](https://vuejs.org/), [Azure Functions](https://azure.microsoft.com/en-us/services/functions/), [PhotoSwype](https://github.com/dimsemenov/photoswipe), [vue-cli](https://github.com/vuejs/vue-cli)
