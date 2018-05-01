@@ -65,7 +65,7 @@ export default {
         });
       });
 
-      this.$refs.map.$mapCreated.then(() => {
+      this.$refs.map.$mapPromise.then(() => {
         this.$refs.map.fitBounds(bounds);
       });
     }
