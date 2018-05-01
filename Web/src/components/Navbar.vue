@@ -3,6 +3,7 @@
     <div class="container">
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
+          <img class="logo" src="../assets/strevde_logo_v1_1_white.svg" alt="strevde logo">
           STREVDE
         </a>
         <div class="navbar-burger" @click="showNav = !showNav" :class="{ 'is-active': showNav }">
@@ -62,6 +63,10 @@ export default {
   .navbar-item {
     color: rgba(255, 255, 255, 1);
     font-weight: 800;
+    .logo {
+      margin-right: 0.75rem;
+      width: 1.75rem;
+    }
   }
 }
 </style>
