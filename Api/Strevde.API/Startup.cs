@@ -28,6 +28,7 @@ namespace Strevde.API
                 })
                 .AddCookie(options =>
                 {
+                    options.Cookie.SameSite = SameSiteMode.None;
                     options.Events = new CookieAuthenticationEvents
                     {
                         OnRedirectToLogin = ctx =>
