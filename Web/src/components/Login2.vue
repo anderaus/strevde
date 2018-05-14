@@ -36,7 +36,7 @@ api.interceptors.response.use(
         .get('auth/signin?returnUrl=' + window.location.href)
         .then(response => {
           console.log('signinresponse', response.data);
-          window.location = response.data.accessUrl;
+          window.location.href = response.data.accessUrl;
         });
     }
     return Promise.reject(error);
