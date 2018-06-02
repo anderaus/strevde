@@ -24,6 +24,8 @@
               <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
                 to="/1151253/trips/ethiopia">Ethiopia</router-link>
               <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
+                to="/1151253/trips/lakedistrict">Lake District</router-link>
+              <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
                 to="/1151253/trips/japan">Japan</router-link>
               <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
                 to="/1151253/trips/madeira">Madeira</router-link>

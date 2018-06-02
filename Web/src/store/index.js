@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 
 import montblanc from '../store/montblanc.json'
 import madeira from '../store/madeira.json'
+import lakedistrict from '../store/lakedistrict.json'
 import dolomites from '../store/dolomites.json'
 import sicily from '../store/sicily.json'
 import japan from '../store/japan.json'
@@ -17,6 +18,7 @@ const debug = process.env.NODE_ENV !== 'production'
 let trips = {
   'montblanc': montblanc,
   'madeira': madeira,
+  'lakedistrict': lakedistrict,
   'dolomites': dolomites,
   'sicily': sicily,
   'japan': japan,
