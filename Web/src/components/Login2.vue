@@ -18,12 +18,7 @@
 <script>
 import axios from 'axios';
 
-const api = axios.create({
-  baseURL: 'https://strevde.azurewebsites.net/api/',
-  withCredentials: true
-});
-
-api.interceptors.response.use(
+axios.interceptors.response.use(
   function(response) {
     console.log('axios response success', response);
     return response;
@@ -32,7 +27,7 @@ api.interceptors.response.use(
     console.log('axios response error', error);
     if (error.response.status === 401) {
       // TODO: Should redirect to a login page, not perform the login immediately
-      api
+      axios
         .get('auth/signin?returnUrl=' + window.location.href)
         .then(response => {
           console.log('signinresponse', response.data);
@@ -62,7 +57,7 @@ export default {
   },
   methods: {
     getTestValues: function() {
-      api.get('test/secret', {withCredentials: true}).then(response => {
+      axios.get('user/secret', { withCredentials: true }).then(response => {
         console.log('success from test/secret', response);
         console.log(response.data);
         this.testvalues = response.data;
@@ -76,5 +71,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 </style>

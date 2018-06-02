@@ -38,7 +38,7 @@
             </div>
           </div>
           <router-link class="navbar-item" v-on:click.native="showNav = false"
-            to="/login">Login</router-link>
+            to="/login">{{user ? user.firstName : 'Login'}}</router-link>
         </div>
       </div>
     </div>
@@ -52,6 +52,11 @@ export default {
     return {
       showNav: false
     };
+  },
+  computed: {
+    user() {
+      return this.$store.state.user;
+    }
   }
 };
 </script>
