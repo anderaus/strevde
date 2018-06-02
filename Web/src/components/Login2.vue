@@ -2,13 +2,21 @@
   <div>
      <section class="section">
       <div class="container">
-        <h1 class="title">Hi there, {{firstName}}!</h1>
-        <hr>
-        <div class="content">
-          STUFFS
+        <div v-if="user">
+          <figure class="image is-64x64">
+            <img :src="user.avatarUrl" />
+          </figure>
+          <br>
+          <p>
+            You're logged in, {{user.firstName}}!
+            <br>
+            The user id is <strong>{{user.userId}}</strong>
+          </p>
         </div>
-        <div v-for="value in testvalues" v-bind:key="value.key">
-          <p>{{value.key}} - {{value.value}}</p>
+        <div v-else>
+          <h1 class="title">Hi there, anonymous!</h1>
+          <hr>
+          <button class="button" v-on:click="login()">Log in with Strava</button>
         </div>
       </div>
     </section>
@@ -18,15 +26,15 @@
 <script>
 import axios from 'axios';
 
-axios.interceptors.response.use(
-  function(response) {
-    console.log('axios response success', response);
-    return response;
+export default {
+  name: 'Login2',
+  computed: {
+    user() {
+      return this.$store.state.user;
+    }
   },
-  function(error) {
-    console.log('axios response error', error);
-    if (error.response.status === 401) {
-      // TODO: Should redirect to a login page, not perform the login immediately
+  methods: {
+    login: function() {
       axios
         .get('auth/signin?returnUrl=' + window.location.href)
         .then(response => {
@@ -34,38 +42,6 @@ axios.interceptors.response.use(
           window.location.href = response.data.accessUrl;
         });
     }
-    return Promise.reject(error);
-  }
-);
-
-export default {
-  name: 'Login2',
-  data() {
-    return {
-      testvalues: []
-    };
-  },
-  computed: {
-    firstName: function() {
-      var namePair = this.testvalues.find(
-        r =>
-          r.key ===
-          'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname'
-      );
-      return namePair ? namePair.value : 'anonymous';
-    }
-  },
-  methods: {
-    getTestValues: function() {
-      axios.get('user/secret', { withCredentials: true }).then(response => {
-        console.log('success from test/secret', response);
-        console.log(response.data);
-        this.testvalues = response.data;
-      });
-    }
-  },
-  mounted: function() {
-    this.getTestValues();
   }
 };
 </script>
