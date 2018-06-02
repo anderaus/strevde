@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Strevde.API.ViewModels;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Strevde.API.Controllers
 {
@@ -31,17 +33,18 @@ namespace Strevde.API.Controllers
             return HttpContext.User.Claims.Single(c => c.Type == claimName).Value;
         }
 
-        [HttpGet("secret")]
-        public IActionResult GetSecret()
+        [HttpGet("debug")]
+        public async Task<IActionResult> GetSecret()
         {
-            var claimPairs = new StringDictionary();
+            var props = new StringDictionary();
 
             foreach (var claim in HttpContext.User.Claims)
             {
-                claimPairs.Add(claim.Type, claim.Value);
+                props.Add(claim.Type, claim.Value);
             }
+            props.Add("accessToken", await HttpContext.GetTokenAsync("access_token"));
 
-            return Ok(claimPairs);
+            return Ok(props);
         }
     }
 }
