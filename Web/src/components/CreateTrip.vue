@@ -2,9 +2,9 @@
 <div>
   <section class="section">
     <div class="container">
-      <h1 class="title" v-show="wizardStep == 1">Select activities to include in trip</h1>
-      <h1 class="title" v-show="wizardStep == 2">Verify selected activities</h1>
-      <table class="table">
+      <h1 class="title" v-show="wizardStep === 1">Select activities to include in trip</h1>
+      <h1 class="title" v-show="wizardStep === 2">Verify selected activities</h1>
+      <table class="table is-hoverable">
         <thead>
           <tr>
             <th v-if="wizardStep == 1"></th>
@@ -15,7 +15,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="activity in activitiesToDisplay" v-bind:key="activity.id">
+          <tr v-for="activity in activitiesToDisplay" :key="activity.id" :class="{'is-selected': wizardStep === 1 && selectedActivities.indexOf(activity) > -1}">
             <td v-if="wizardStep == 1"><input type="checkbox" v-model="activity.selected"></td>
             <td>{{activity.startDate | localdate}}</td>
             <td>{{activity.name}}</td>
@@ -56,16 +56,16 @@
       <button
         class="button is-primary is-outlined"
         v-if="wizardStep == 1"
-        v-on:click="displayCreateTripStep">Create trip</button>
+        v-on:click="displayCreateTripStep">Next step</button>
       <button
-        class="button is-primary is-outlined"
+        class="button is-primary"
         v-if="wizardStep == 2"
         v-on:click="saveTrip">Save trip</button>
       <button
         class="button"
         v-if="wizardStep == 1"
         v-on:click="loadMoreActivities"
-        v-bind:class="{ 'is-loading': isLoadingMoreActivities }">Load more activities</button>
+        :class="{ 'is-loading': isLoadingMoreActivities }">Load more activities</button>
       <button
         class="button"
         v-if="wizardStep == 2"
@@ -107,6 +107,7 @@ export default {
     displayCreateTripStep: function() {
       // TODO: If more than 1 activity selected, else display warning
       this.wizardStep = 2;
+      window.scrollTo(0, 0);
     },
     goback: function() {
       this.wizardStep--;
@@ -117,9 +118,10 @@ export default {
   },
   computed: {
     activitiesToDisplay: function() {
-      return this.wizardStep === 1
-        ? this.activities
-        : this.activities.filter(a => a.selected);
+      return this.wizardStep === 1 ? this.activities : this.selectedActivities;
+    },
+    selectedActivities: function() {
+      return this.activities.filter(a => a.selected);
     }
   },
   mounted: function() {
