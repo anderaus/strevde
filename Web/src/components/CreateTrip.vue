@@ -3,7 +3,7 @@
   <section class="section">
     <div class="container">
       <h1 class="title" v-show="wizardStep === 1">Select activities to include in trip</h1>
-      <h1 class="title" v-show="wizardStep === 2">Verify selected activities</h1>
+      <h1 class="title" v-show="wizardStep === 2">Your selected activities</h1>
       <table class="table is-hoverable">
         <thead>
           <tr>
@@ -60,7 +60,7 @@
       <button
         class="button is-primary"
         v-if="wizardStep == 2"
-        v-on:click="saveTrip">Save trip</button>
+        v-on:click="createTrip">Create trip</button>
       <button
         class="button"
         v-if="wizardStep == 1"
@@ -112,7 +112,7 @@ export default {
     goback: function() {
       this.wizardStep--;
     },
-    saveTrip: function() {
+    createTrip: function() {
       alert('todo: save the trip, dude');
     }
   },
