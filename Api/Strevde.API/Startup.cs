@@ -7,7 +7,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Strava.DotNet;
+using Strevde.API.Services;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -58,7 +60,19 @@ namespace Strevde.API
                 });
 
             services.AddSingleton<StravaClient>();
-            services.AddMvc();
+            services.AddSingleton<ITripConverter, TripConverter>();
+            services.AddSingleton<ITripStorage, TripStorage>(
+                provider =>
+                    new TripStorage(
+                        Configuration.GetValue<string>("appSettings:cosmosDbEndpointUri"),
+                        Configuration.GetValue<string>("appSettings:cosmosDbAuthKey")));
+
+            services
+                .AddMvc()
+                .AddJsonOptions(options =>
+                {
+                    options.SerializerSettings.Converters.Add(new StringEnumConverter());
+                });
             services.AddAutoMapper();
         }
 

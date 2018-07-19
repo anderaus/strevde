@@ -17,12 +17,38 @@ namespace Strava.DotNet.Operations
                 {"per_page", activitiesPerPage.ToString()}
             };
 
-            var activitiesResult = await Connection.Get<IEnumerable<Activity>>(
+            var activities = await Connection.Get<IEnumerable<Activity>>(
                 "athlete/activities",
                 token,
                 parameters);
 
-            return activitiesResult;
+            return activities;
+        }
+
+        public async Task<Activity> GetActivity(string token, long activityId)
+        {
+            var activity = await Connection.Get<Activity>(
+                $"activities/{activityId}",
+                token);
+
+            return activity;
+        }
+
+        public async Task<IEnumerable<Photo>> GetActivityPhotos(string token, long activityId, int matchWidth)
+        {
+            var parameters = new Dictionary<string, string>
+            {
+                {"photo_sources", "true"},
+                {"size", matchWidth.ToString()}
+            };
+
+            var photos = await Connection.Get<IEnumerable<Photo>>(
+                $"activities/{activityId}/photos",
+                token,
+                parameters
+            );
+
+            return photos;
         }
     }
 }
