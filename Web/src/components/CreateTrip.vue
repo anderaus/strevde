@@ -4,7 +4,11 @@
     <div class="container">
       <h1 class="title" v-show="wizardStep === 1">Select activities to include in trip</h1>
       <h1 class="title" v-show="wizardStep === 2">Your selected activities</h1>
-      <table class="table is-hoverable">
+      <h1 class="title" v-show="wizardStep === 3 && !generatedTripId">
+        <i class="fas fa-spinner fa-spin"></i>&nbsp;&nbsp;Your trip is being created...
+      </h1>
+      <h1 class="title" v-show="wizardStep === 3 && !!generatedTripId">Trip created successfully!</h1>
+      <table class="table is-hoverable" v-show="wizardStep === 1 || wizardStep === 2">
         <thead>
           <tr>
             <th v-if="wizardStep == 1"></th>
@@ -29,25 +33,43 @@
           <div class="field">
             <label class="label">Trip title</label>
             <div class="control">
-              <input class="input" type="text" placeholder="e.g Trekking Mount Blanc">
+              <input class="input" type="text" placeholder="e.g Trekking Mount Blanc" v-model="tripTitle">
             </div>
           </div>
           <div class="field">
             <label class="label">Trip subtitle</label>
             <div class="control">
-              <input class="input" type="text" placeholder="e.g. Anders & Hilde 2018">
+              <input class="input" type="text" placeholder="e.g. Anders & Hilde 2018" v-model="tripDescription">
             </div>
           </div>
           <div class="field">
             <label class="label">Map type</label>
             <div class="select">
-              <select>
-                <option>Terrain</option>
-                <option>Roadmap</option>
-                <option>Satellite</option>
-                <option>Hybrid</option>
+              <select v-model="tripMapType">
+                <option value="terrain">Terrain</option>
+                <option value="roadmap">Roadmap</option>
+                <option value="satellite">Satellite</option>
+                <option value="hybrid">Hybrid</option>
               </select>
             </div>
+          </div>
+        </div>
+        <div class="column">
+        </div>
+      </div>
+      <div v-if="wizardStep == 3" class="columns">
+        <div class="column">
+          <div v-if="generatedTripId">
+            <article class="message is-warning">
+              <div class="message-body">
+                <strong>Warning!</strong> The trip is saved for testing purposes only during the beta phase. Feel free to
+                use it and share it, but be aware that it can be deleted at any time!
+              </div>
+            </article>
+            <p>
+              Visit your newly created trip at TODO: LINK TO TRIP PAGE WITH ID <strong>{{generatedTripId}}</strong> here
+            </p>
+            TODO: Add button to "create new trip" and "go to trip" (not needed?)
           </div>
         </div>
         <div class="column">
@@ -86,7 +108,12 @@ export default {
     return {
       activities: [],
       isLoadingMoreActivities: false,
-      wizardStep: 1
+      wizardStep: 1,
+      tripTitle: '',
+      tripDescription: '',
+      tripMapType: 'terrain',
+      generatedTripId: '',
+      isGeneratingTrip: false
     };
   },
   methods: {
@@ -113,7 +140,22 @@ export default {
       this.wizardStep--;
     },
     createTrip: function() {
-      alert('todo: save the trip, dude');
+      // TODO: Use form and proper validation
+      let trip = {
+        title: this.tripTitle,
+        description: this.tripDescription,
+        mapType: this.tripMapType,
+        activityIDs: this.selectedActivities.map(a => a.id)
+      };
+      console.log(trip);
+
+      this.wizardStep = 3;
+      this.isGeneratingTrip = true;
+      axios.post(`trip`, trip).then(response => {
+        this.isGeneratingTrip = false;
+        console.log('createTripResponse', response);
+        this.generatedTripId = response.data.tripId;
+      });
     }
   },
   computed: {
