@@ -1,11 +1,12 @@
+import axios from 'axios';
 import Vue from 'vue';
+
 import App from './App';
-import router from './router';
-import store from './store';
-import { round } from './filters/round.js';
 import { friendlytime } from './filters/friendlytime.js';
 import { localdate } from './filters/localdate.js';
-import axios from 'axios';
+import { round } from './filters/round.js';
+import router from './router';
+import store from './store';
 
 Vue.config.productionTip = false;
 

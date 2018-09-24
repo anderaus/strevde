@@ -1,14 +1,15 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import axios from 'axios';
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-import montblanc from '../store/montblanc.json'
-import madeira from '../store/madeira.json'
-import lakedistrict from '../store/lakedistrict.json'
-import dolomites from '../store/dolomites.json'
-import sicily from '../store/sicily.json'
-import japan from '../store/japan.json'
-import ethiopia from '../store/ethiopia.json'
-import rondaneski from '../store/rondaneski.json'
+import dolomites from '../store/dolomites.json';
+import ethiopia from '../store/ethiopia.json';
+import japan from '../store/japan.json';
+import lakedistrict from '../store/lakedistrict.json';
+import madeira from '../store/madeira.json';
+import montblanc from '../store/montblanc.json';
+import rondaneski from '../store/rondaneski.json';
+import sicily from '../store/sicily.json';
 
 Vue.use(Vuex)
 
@@ -36,12 +37,26 @@ function builder(userInfo) {
     actions: {
       setTrip(context, tripId) {
         context.commit('setTrip', tripId)
+      },
+      loadTrip(context, tripId) {
+        console.log(`action: loadTrip, id: ${tripId}`);
+        axios
+          .get(`trip/${tripId}`)
+          .then(r => r.data)
+          .then(trip => {
+            console.log('Loaded trip', trip);
+            context.commit('setRealTrip', trip);
+          })
       }
     },
     mutations: {
       setTrip(state, tripId) {
         state.trip = trips[tripId];
         state.tripId = tripId;
+      },
+      setRealTrip(state, trip) {
+        state.trip = trip;
+        state.tripId = trip.id;
       }
     },
     getters: {

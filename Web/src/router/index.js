@@ -17,7 +17,7 @@ export default new Router({
       component: Trip
     },
     {
-      path: '/1151253/trips/:tripId',
+      path: '/trips/:tripId',
       name: 'Trip',
       component: Trip
     },

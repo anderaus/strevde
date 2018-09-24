@@ -67,9 +67,8 @@
               </div>
             </article>
             <p>
-              Visit your newly created trip at TODO: LINK TO TRIP PAGE WITH ID <strong>{{generatedTripId}}</strong> here
+              Visit your newly created trip <a :href="'/trips/' + generatedTripId">here</a><br />
             </p>
-            TODO: Add button to "create new trip" and "go to trip" (not needed?)
           </div>
         </div>
         <div class="column">

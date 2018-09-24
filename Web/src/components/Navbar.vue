@@ -20,21 +20,21 @@
             </a>
             <div class="navbar-dropdown">
               <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
-                to="/1151253/trips/dolomites">Dolomites</router-link>
+                to="/trips/dolomites">Dolomites</router-link>
               <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
-                to="/1151253/trips/ethiopia">Ethiopia</router-link>
+                to="/trips/ethiopia">Ethiopia</router-link>
               <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
-                to="/1151253/trips/lakedistrict">Lake District</router-link>
+                to="/trips/lakedistrict">Lake District</router-link>
               <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
-                to="/1151253/trips/japan">Japan</router-link>
+                to="/trips/japan">Japan</router-link>
               <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
-                to="/1151253/trips/madeira">Madeira</router-link>
+                to="/trips/madeira">Madeira</router-link>
               <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
-                to="/1151253/trips/rondaneski">Rondane</router-link>
+                to="/trips/rondaneski">Rondane</router-link>
               <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
-                to="/1151253/trips/sicily">Sicily</router-link>
+                to="/trips/sicily">Sicily</router-link>
               <router-link class="navbar-item dropdown-item" v-on:click.native="showNav = false"
-                to="/1151253/trips/montblanc">Tour du Mont Blanc</router-link>
+                to="/trips/montblanc">Tour du Mont Blanc</router-link>
             </div>
           </div>
           <router-link class="navbar-item" v-on:click.native="showNav = false"
