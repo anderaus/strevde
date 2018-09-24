@@ -12,10 +12,11 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "photoswipe": "^4.1.2",
-    "vue": "^2.5.16",
+    "vue": "^2.5.17",
     "vue-router": "^3.0.1",
-    "vue2-google-maps": "^0.9.6",
+    "vue2-google-maps": "^0.10.2",
     "vuex": "^3.0.1"
   },
   "devDependencies": {

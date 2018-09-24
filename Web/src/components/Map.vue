@@ -71,13 +71,13 @@ export default {
     }
   },
   mounted: function() {
-    VueGoogleMaps.loaded.then(() => {
+    this.$gmapApiPromiseLazy().then(() => {
       this.initMap();
     });
   },
   watch: {
     tripId() {
-      VueGoogleMaps.loaded.then(() => {
+      this.$gmapApiPromiseLazy().then(() => {
         this.updateMap();
       });
     }

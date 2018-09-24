@@ -19,11 +19,27 @@ export default {
     TripDetails
   },
   mounted: function() {
+    const hardcodedTrips = [
+      'madeira',
+      'montblanc',
+      'lakedistrict',
+      'dolomites',
+      'sicily',
+      'japan',
+      'ethiopia',
+      'rondaneski'
+    ];
+
     let tripId =
       this.$route.params.tripId === undefined
         ? 'montblanc'
         : this.$route.params.tripId;
-    this.$store.dispatch('setTrip', tripId);
+
+    if (hardcodedTrips.indexOf(tripId) > -1) {
+      this.$store.dispatch('setTrip', tripId);
+    } else {
+      this.$store.dispatch('loadTrip', tripId);
+    }
   },
   watch: {
     $route(to, from) {
